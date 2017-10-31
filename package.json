@@ -1,0 +1,47 @@
+{
+  "name": "that-server",
+  "version": "0.0.1",
+  "description": "That Conference Backend Server",
+  "license": "Apache 2",
+  "main": "index.js",
+  "scripts": {
+    "prestart": "",
+    "start": "babel-watch ./source/index.js",
+    "build": "babel ./source -d ./build",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "contributors": [
+    {
+      "name": "Clark Sell",
+      "email": "hello@unspecified.io",
+      "url": "http://unspecified.io/"
+    }
+  ],
+  "engines": {
+    "node": "^8.1"
+  },
+  "dependencies": {
+    "express": "^4.16.2",
+    "express-graphql": "^0.6.11",
+    "graphql": "^0.11.7",
+    "moment": "^2.19.1",
+    "winston": "^2.4.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "babel-eslint": "^8.0.1",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-env": "^1.6.0",
+    "babel-watch": "^2.0.7",
+    "eslint": "^4.8.0",
+    "eslint-config-airbnb": "^16.0.0",
+    "eslint-config-airbnb-base": "^12.0.2",
+    "eslint-config-prettier": "^2.6.0",
+    "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-jsx-a11y": "^6.0.2",
+    "eslint-plugin-prettier": "^2.3.1",
+    "eslint-plugin-react": "^7.4.0",
+    "prettier": "^1.7.4"
+  }
+}

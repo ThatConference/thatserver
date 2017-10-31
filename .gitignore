@@ -57,3 +57,8 @@ typings/
 # dotenv environment variables file
 .env
 
+# macos files
+.DS_Store
+
+# babel build output
+build/
