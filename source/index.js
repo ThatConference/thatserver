@@ -1,14 +1,16 @@
 import express from 'express';
 import graphqlHTTP from 'express-graphql';
+import { express as voyager } from 'graphql-voyager/middleware';
 
-import logger from './utils/logger';
+import logger from './utilities/logger';
+import schema from './schema';
 
 const app = express();
-const schema = {};
 
 const paths = {
   graphql: `/graphql`,
   graphiql: `/graphiql`,
+  voyager: `/voyager`,
 };
 
 const dataLoaders = () => ({
@@ -24,6 +26,7 @@ app.use(
     context: {
       request,
       dataLoaders: await dataLoaders(),
+      debug: true,
     },
     graphiql: false,
   }))
@@ -34,6 +37,13 @@ app.use(
   graphqlHTTP({
     schema,
     graphiql: true,
+  })
+);
+
+app.use(
+  paths.voyager,
+  voyager({
+    endpointUrl: paths.graphql,
   })
 );
 
