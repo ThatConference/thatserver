@@ -1,5 +1,5 @@
 {
   "events": {
-    "restart": "jest --notify"
+    "start": "jest --notify"
   }
 }
