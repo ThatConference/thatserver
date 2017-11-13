@@ -12,7 +12,8 @@
   "env": {
     "browser": true,
     "node": true,
-    "jquery": true
+    "jquery": true,
+    "jest/globals": true
   },
   "rules": {
     "no-unused-vars": [
@@ -67,7 +68,12 @@
       {
         "aspects": ["invalidHref"]
       }
-    ]
+    ],
+    "jest/no-disabled-tests": "warn",
+    "jest/no-focused-tests": "error",
+    "jest/no-identical-title": "error",
+    "jest/prefer-to-have-length": "warn",
+    "jest/valid-expect": "error"
   },
-  "plugins": ["prettier"]
+  "plugins": ["prettier", "jest"]
 }

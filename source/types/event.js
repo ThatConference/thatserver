@@ -1,43 +1,70 @@
-import { GraphQLObjectType, GraphQLString, GraphQLID, GraphQLNonNull, GraphQLList } from 'graphql';
+import { GraphQLObjectType, GraphQLString, GraphQLID, GraphQLNonNull, GraphQLList, GraphQLDate } from 'graphql';
 import speaker from './speaker';
 import session from './session';
+import sponsor from './sponsor';
+import location from './location';
 
-// import { speaker } from '../resolvers/speaker';
-// import { session } from '../resolvers/session';
-// import { id } from '../resolvers/id';
+import { id } from '../resolvers/id';
 
 export default new GraphQLObjectType({
   name: 'Event',
-  description: 'A gathering of awesome that takes place on some regular interval',
+  description: 'The named collection of a community of people gathering to share all of their awesome.',
   fields: () => ({
     id: {
       type: new GraphQLNonNull(GraphQLID),
-      description: 'System generated unique id for this session.',
-      // resolve: (...args) => id(...args),
+      description: 'System generated unique id for this event.',
+      resolve: (...args) => id(...args),
     },
+
     name: {
       type: new GraphQLNonNull(GraphQLString),
-      description: 'Name of the event',
+      description: 'The event name, ex. That Conference.',
     },
+
+    shortDescription: {
+      type: GraphQLString,
+      description: 'Short Description of the event.',
+    },
+
     description: {
       type: new GraphQLNonNull(GraphQLString),
-      description: 'Brief overview detatailing what this session will be about.',
+      description:
+        'Brief overview detatailing what this event is really all about. ex. That Conference, Summer Camp For Geeks',
     },
-    year: {
+
+    version: {
       type: new GraphQLNonNull(GraphQLString),
-      description: 'The year this event takes place',
+      description: '',
     },
+
+    startDate: {
+      type: new GraphQLNonNull(GraphQLString),
+      description: 'The date and time this event starts.',
+    },
+
+    endDate: {
+      type: new GraphQLNonNull(GraphQLString),
+      description: 'The date and time this event ends.',
+    },
+
+    location: {
+      type: location,
+      description: 'The location of this event.',
+    },
+
     speakers: {
-      // type: new GraphQLList(require('./speaker')), // TODO:: runtime require due to circular reference
-      type: new GraphQLList(speaker), // TODO:: runtime require due to circular reference
-      description: 'Speakers for this event.',
-      // resolve: (...args) => speaker(...args),
+      type: new GraphQLList(speaker),
+      description: 'Sessions on the schedule for this event.',
     },
+
     sessions: {
-      // type: new GraphQLList(require('./session')), // TODO:: runtime require due to circular reference
-      type: new GraphQLList(session), // TODO:: runtime require due to circular reference
-      description: 'Sessions for this event.',
-      // resolve: (...args) => session(...args),
+      type: new GraphQLList(session),
+      description: 'Sessions on the schedule for this event.',
+    },
+
+    sponsors: {
+      type: new GraphQLList(sponsor),
+      description: 'Partners and Sponsors supporting this event.',
     },
   }),
 });
