@@ -1,11 +1,11 @@
-import speaker from './speaker';
+import party from './party';
 import session from './session';
 import sponsor from './sponsor';
 import event from './event';
 import location from './location';
 
 module.exports = {
-  speaker,
+  party,
   session,
   sponsor,
   event,

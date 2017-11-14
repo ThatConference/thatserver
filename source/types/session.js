@@ -1,9 +1,10 @@
 import { GraphQLObjectType, GraphQLString, GraphQLID, GraphQLNonNull, GraphQLList } from 'graphql';
 
-import speaker from './speaker';
+import party from './party';
+import favorite from './favorite';
 
-// const { speaker } = require('../resolvers/speaker');
-// const { id } = require('../resolvers/id');
+import id from '../resolvers/id';
+
 export default new GraphQLObjectType({
   name: 'Session',
   description: 'A session is defined as a presentaiton that a speaker will give.',
@@ -11,7 +12,7 @@ export default new GraphQLObjectType({
     id: {
       type: new GraphQLNonNull(GraphQLID),
       description: 'System generated unique id for this session.',
-      // resolve: (...args) => id(...args),
+      resolve: (...args) => id(...args),
     },
     title: {
       type: new GraphQLNonNull(GraphQLString),
@@ -22,10 +23,12 @@ export default new GraphQLObjectType({
       description: 'Brief overview detatailing what this session will be about.',
     },
     speakers: {
-      // type: new GraphQLList(require('./speaker')), // TODO:: runtime require due to circular reference
-      type: new GraphQLList(speaker), // TODO:: runtime require due to circular reference
+      type: new GraphQLList(party),
       description: 'speakers on the sessions',
-      // resolve: (...args) => speaker(...args),
+    },
+    favorites: {
+      type: new GraphQLList(favorite),
+      description: 'speakers on the sessions',
     },
   }),
 });

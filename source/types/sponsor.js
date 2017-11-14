@@ -1,8 +1,11 @@
 import { GraphQLObjectType, GraphQLString, GraphQLID, GraphQLNonNull, GraphQLList } from 'graphql';
 
 import session from './session';
-import speaker from './speaker';
+import party from './party';
 import event from './event';
+import location from './location';
+
+import id from '../resolvers/id';
 
 export default new GraphQLObjectType({
   name: 'Sponsor',
@@ -11,6 +14,7 @@ export default new GraphQLObjectType({
     id: {
       type: new GraphQLNonNull(GraphQLID),
       description: 'System generated unique id for this speaker.',
+      resolve: (...args) => id(...args),
     },
 
     email: {
@@ -28,8 +32,8 @@ export default new GraphQLObjectType({
       description: 'The events this sponsor has supported.',
     },
 
-    speakers: {
-      type: new GraphQLList(speaker),
+    contacts: {
+      type: new GraphQLList(party),
       description: 'sessions....',
     },
 
@@ -42,6 +46,10 @@ export default new GraphQLObjectType({
       deprecationReason: 'We really do not care where you work we care what you do',
       type: GraphQLString,
       description: 'Speakers Company',
+    },
+    location: {
+      type: location,
+      description: 'their location',
     },
   }),
 });

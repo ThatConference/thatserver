@@ -2,10 +2,10 @@ import * as _ from 'lodash';
 import { GraphQLSchema, GraphQLObjectType } from 'graphql';
 
 import events from './queries/events';
-import speakers from './queries/speakers';
+import parties from './queries/parties';
 import sessions from './queries/sessions';
 
-const queries = _.merge(events, speakers, sessions);
+const queries = _.merge(events, parties, sessions);
 
 module.exports = new GraphQLSchema({
   query: new GraphQLObjectType({

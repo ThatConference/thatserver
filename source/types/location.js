@@ -1,6 +1,7 @@
 import { GraphQLObjectType, GraphQLString, GraphQLID, GraphQLNonNull, GraphQLList, GraphQLDate } from 'graphql';
 
 import event from './event';
+import id from '../resolvers/id';
 
 export default new GraphQLObjectType({
   name: 'Location',

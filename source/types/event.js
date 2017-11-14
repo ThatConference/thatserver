@@ -1,8 +1,8 @@
 import { GraphQLObjectType, GraphQLString, GraphQLID, GraphQLNonNull, GraphQLList, GraphQLDate } from 'graphql';
-import speaker from './speaker';
+import party from './party';
 import session from './session';
 import sponsor from './sponsor';
-import location from './location';
+import venue from './venue';
 
 import { id } from '../resolvers/id';
 
@@ -47,13 +47,13 @@ export default new GraphQLObjectType({
       description: 'The date and time this event ends.',
     },
 
-    location: {
-      type: location,
+    venue: {
+      type: venue,
       description: 'The location of this event.',
     },
 
-    speakers: {
-      type: new GraphQLList(speaker),
+    parties: {
+      type: new GraphQLList(party),
       description: 'Sessions on the schedule for this event.',
     },
 

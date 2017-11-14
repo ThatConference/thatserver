@@ -14,7 +14,7 @@ const paths = {
 };
 
 const dataLoaders = () => ({
-  speakers: {},
+  parties: {},
   sponsors: {},
 });
 

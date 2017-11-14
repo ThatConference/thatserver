@@ -2,10 +2,10 @@ import { GraphQLList } from 'graphql';
 
 import logger from '../utilities/logger';
 import getProjection from '../utilities/projections';
-import { speaker as speakerType } from '../types';
+import { party as speakerType } from '../types';
 
 export default {
-  speakers: {
+  parties: {
     type: new GraphQLList(speakerType),
     description: 'The speakers query will return you a list of all speakers blaa blaa blaa.',
     // deprecationReason: 'reason here',
