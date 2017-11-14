@@ -4,6 +4,7 @@ import session from './session';
 import party from './party';
 import event from './event';
 import location from './location';
+import badgeScan from './badgeScan';
 
 import id from '../resolvers/id';
 
@@ -49,6 +50,10 @@ export default new GraphQLObjectType({
     },
     location: {
       type: location,
+      description: 'their location',
+    },
+    badgeScans: {
+      type: new GraphQLList(badgeScan),
       description: 'their location',
     },
   }),

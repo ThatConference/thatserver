@@ -2,6 +2,7 @@ import { GraphQLObjectType, GraphQLString, GraphQLID, GraphQLNonNull, GraphQLLis
 
 import session from './session';
 import favorite from './favorite';
+import badge from './badge';
 
 // const { session } = require('../resolvers/session');
 // const { firstName } = require('../resolvers/speaker');
@@ -32,6 +33,10 @@ export default new GraphQLObjectType({
     roles: {
       type: new GraphQLNonNull(GraphQLString),
       description: 'roles',
+    },
+    badge: {
+      type: badge,
+      description: "Person's Badge",
     },
     favorites: {
       type: new GraphQLList(favorite),
