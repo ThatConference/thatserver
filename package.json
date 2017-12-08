@@ -23,7 +23,7 @@
     }
   ],
   "engines": {
-    "node": "^8.1"
+    "node": "^8.9"
   },
   "jest": {
     "testEnvironment": "node",
