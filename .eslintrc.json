@@ -19,7 +19,7 @@
     "no-unused-vars": [
       1,
       {
-        "argsIgnorePattern": "res|next|^err"
+        "argsIgnorePattern": "res|next|resolve|reject|^err"
       }
     ],
     "arrow-body-style": [2, "as-needed"],
@@ -36,6 +36,7 @@
     "comma-dangle": 0,
     "max-len": 0,
     "import/extensions": 0,
+    "import/prefer-default-export": 1,
     "no-underscore-dangle": 0,
     "consistent-return": 0,
     "radix": 0,

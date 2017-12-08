@@ -1,6 +1,7 @@
+import bodyParser from 'body-parser';
 import express from 'express';
-import graphqlHTTP from 'express-graphql';
 import { express as voyager } from 'graphql-voyager/middleware';
+import { graphqlExpress, graphiqlExpress } from 'apollo-server-express';
 
 import logger from './utilities/logger';
 import schema from './schema';
@@ -13,33 +14,24 @@ const paths = {
   voyager: `/voyager`,
 };
 
-const dataLoaders = () => ({
-  parties: {},
-  sponsors: {},
-});
-
+// The GraphQL endpoint
+// app.use(paths.graphql, bodyParser.json(), graphqlExpress({ schema }));
 app.use(
   paths.graphql,
-  graphqlHTTP(async (request, response, graphQLParams) => ({
+  bodyParser.json(),
+  graphqlExpress(async (request, response) => ({
     schema,
-    // rootValue: await someFunctionToGetRootValue(request),
     context: {
       request,
-      dataLoaders: await dataLoaders(),
       debug: true,
     },
-    graphiql: false,
   }))
 );
 
-app.use(
-  paths.graphiql,
-  graphqlHTTP({
-    schema,
-    graphiql: true,
-  })
-);
+// The Graphiql endpoint
+app.use(paths.graphiql, graphiqlExpress({ endpointURL: '/graphql' }));
 
+// Voyager ( data viz ) endpoint
 app.use(
   paths.voyager,
   voyager({
