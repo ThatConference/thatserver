@@ -9,7 +9,11 @@
     "start": "nodemon ./source/index.js --exec babel-node",
     "build": "babel ./source -d ./build",
     "test": "jest --coverage",
-    "test:watch": "jest --watchAll --coverage"
+    "test:watch": "jest --watchAll --coverage",
+    "lint": "eslint -c ./.eslintrc.json ./source",
+    "validate": "npm-run-all --parallel test lint",
+    "precommit": "npm run validate",
+    "prepush": "npm run validate"
   },
   "contributors": [
     {
@@ -24,7 +28,8 @@
   "jest": {
     "testEnvironment": "node",
     "verbose": true,
-    "rootDir": "./source"
+    "rootDir": "./source",
+    "coverageDirectory": "../coverage"
   },
   "dependencies": {
     "express": "^4.16.2",
@@ -55,8 +60,10 @@
     "eslint-plugin-jsx-a11y": "^6.0.2",
     "eslint-plugin-prettier": "^2.3.1",
     "eslint-plugin-react": "^7.4.0",
+    "husky": "^0.14.3",
     "jest-cli": "^21.2.1",
     "nodemon": "^1.12.1",
+    "npm-run-all": "^4.1.2",
     "prettier": "^1.7.4"
   }
 }
