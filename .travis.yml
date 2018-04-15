@@ -15,7 +15,7 @@ deploy:
   default: true
   skip_cleanup: true
   provider: gae
-  project: "BigRedButton"
+  project: "bigredbutton-165918"
   keyfile: "BigRedButton-8fc659339eef.json"
   message: "Build # $TRAVIS_BUILD_NUMBER"
       
