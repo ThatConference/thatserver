@@ -16,8 +16,7 @@
     "test:watch": "jest --watchAll --coverage",
     "lint": "eslint -c ./.eslintrc.json ./src",
     "validate": "npm-run-all --parallel test lint",
-    "precommit": "npm run validate",
-    "prepush": "npm run validate"
+    "precommit": "npm run validate"
   },
   "contributors": [
     {
