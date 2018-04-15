@@ -62,3 +62,6 @@ typings/
 
 # babel build output
 build/
+
+# ignore private directories
+private/
