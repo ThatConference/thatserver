@@ -8,6 +8,7 @@ script:
   - npm run build
 
 before_install:
+- mkdir ./build  
 - openssl aes-256-cbc -K $encrypted_917a2a1d3be4_key -iv $encrypted_917a2a1d3be4_iv
   -in BigRedButton-8fc659339eef.json.enc -out ./build/BigRedButton-8fc659339eef.json -d
 
