@@ -10,7 +10,8 @@
   },
   "scripts": {
     "prestart": "",
-    "start": "nodemon ./src/index.js --exec babel-node",
+    "start": "node ./index",
+    "start:watch": "nodemon ./src/index.js --exec babel-node",
     "build": "babel ./src -d ./build",
     "test": "jest --coverage",
     "test:watch": "jest --watchAll --coverage",
