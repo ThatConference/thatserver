@@ -41,7 +41,7 @@ server.use(
   graphiqlExpress({
     endpointURL: paths.graphql,
     // subscriptionsEndpoint: `ws://localhost:${PORT}/subscriptions`,
-    subscriptionsEndpoint: `ws://bigredbutton-165918.appspot.com/subscriptions`,
+    subscriptionsEndpoint: `wss://bigredbutton-165918.appspot.com/subscriptions`,
   })
 );
 
