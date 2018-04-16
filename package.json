@@ -41,7 +41,8 @@
     "name": "that-server",
     "alias": "that-server-demo",
     "env": {
-      "SUBSCRIPTIONS_HOST": "wss://that-server-demo.now.sh"
+      "SUBSCRIPTIONS_HOST": "wss://that-server-demo.now.sh",
+      "PORT": "80"
     }
   },
   "dependencies": {
