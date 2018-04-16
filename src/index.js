@@ -41,7 +41,7 @@ server.use(
   graphiqlExpress({
     endpointURL: paths.graphql,
     // subscriptionsEndpoint: `ws://localhost:${PORT}/subscriptions`,
-    subscriptionsEndpoint: 'wss://bigredbutton-165918.appspot.com/subscriptions',
+    subscriptionsEndpoint: 'wss://thatserver-vwhfjkmifm.now.sh/subscriptions',
   }),
 );
 
@@ -83,6 +83,9 @@ setInterval(() => {
   logger.debug(`publishing on the socket: ${x}`);
 
   pubsub.publish('roomChanged', {
-    id: `${x}`, name: `${Date.now()}`, floor: '1', building: 'asdf',
+    id: `${x}`,
+    name: `${Date.now()}`,
+    floor: '1',
+    building: 'asdf',
   });
 }, 5000);
