@@ -15,9 +15,9 @@ const PORT = Number(process.env.PORT || 8000);
 const server = express();
 
 const paths = {
-  graphql: `/graphql`,
-  graphiql: `/graphiql`,
-  voyager: `/voyager`,
+  graphql: '/graphql',
+  graphiql: '/graphiql',
+  voyager: '/voyager',
 };
 
 server.use('*', cors());
@@ -32,7 +32,7 @@ server.use(
       request,
       debug: true,
     },
-  }))
+  })),
 );
 
 // Graphiql endpoint
@@ -41,8 +41,8 @@ server.use(
   graphiqlExpress({
     endpointURL: paths.graphql,
     // subscriptionsEndpoint: `ws://localhost:${PORT}/subscriptions`,
-    subscriptionsEndpoint: `wss://bigredbutton-165918.appspot.com/subscriptions`,
-  })
+    subscriptionsEndpoint: 'wss://bigredbutton-165918.appspot.com/subscriptions',
+  }),
 );
 
 // Voyager ( data viz ) endpoint
@@ -50,7 +50,7 @@ server.use(
   paths.voyager,
   voyager({
     endpointUrl: paths.graphql,
-  })
+  }),
 );
 
 // const port = Number(process.env.PORT || 8000);
@@ -64,7 +64,7 @@ ws.listen(PORT, () => {
   // Set up the WebSocket for handling GraphQL subscriptions
 
   // eslint-disable-next-line
-  new SubscriptionServer(
+    new SubscriptionServer(
     {
       execute,
       subscribe,
@@ -73,7 +73,7 @@ ws.listen(PORT, () => {
     {
       server: ws,
       path: '/subscriptions',
-    }
+    },
   );
 });
 
@@ -82,5 +82,7 @@ setInterval(() => {
   x += 1;
   logger.debug(`publishing on the socket: ${x}`);
 
-  pubsub.publish('roomChanged', { id: `${x}`, name: `${Date.now()}`, floor: '1', building: 'asdf' });
+  pubsub.publish('roomChanged', {
+    id: `${x}`, name: `${Date.now()}`, floor: '1', building: 'asdf',
+  });
 }, 5000);

@@ -14,7 +14,7 @@ const roomChanged = {
     },
   },
 
-  resolve: payload => {
+  resolve: (payload) => {
     logger.data('resolve payload', payload);
     return payload;
   },
@@ -26,7 +26,7 @@ const roomChanged = {
       logger.debug('sub vars', variables);
 
       return true;
-    }
+    },
   ),
 };
 

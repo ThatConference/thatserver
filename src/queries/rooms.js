@@ -31,7 +31,7 @@ const rooms = {
   args: {},
   resolve: async (root, args, options, fieldASTs) =>
     new Promise((resolve, reject) => {
-      logger.debug(`in room query`);
+      logger.debug('in room query');
       return resolve(mockData);
     }),
 };
