@@ -88,4 +88,8 @@ setInterval(() => {
     floor: '1',
     building: 'asdf',
   });
+
+  if (x > 300) {
+    x = 1;
+  }
 }, 5000);
