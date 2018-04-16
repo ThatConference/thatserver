@@ -1,6 +1,8 @@
 runtime: nodejs
 env: flex
 
+env_variables:
+  SUBSCRIPTIONS_HOST: wss://bigredbutton-165918.appspot.com
 
 manual_scaling:
   instances: 1

@@ -40,8 +40,7 @@ server.use(
   paths.graphiql,
   graphiqlExpress({
     endpointURL: paths.graphql,
-    // subscriptionsEndpoint: `ws://localhost:${PORT}/subscriptions`,
-    subscriptionsEndpoint: 'wss://thatserver-vwhfjkmifm.now.sh/subscriptions',
+    subscriptionsEndpoint: `${process.env.SUBSCRIPTIONS_HOST}:${PORT}/subscriptions`,
   }),
 );
 
@@ -52,9 +51,6 @@ server.use(
     endpointUrl: paths.graphql,
   }),
 );
-
-// const port = Number(process.env.PORT || 8000);
-// server.listen(PORT);
 
 // Wrap the Express server
 const ws = createServer(server);

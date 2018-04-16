@@ -38,8 +38,11 @@
     "coverageDirectory": "../coverage"
   },
   "now": {
-    "name": "thatserver",
-    "alias": "api.thatconference.com"
+    "name": "that-server",
+    "alias": "that-server-demo",
+    "env": {
+      "SUBSCRIPTIONS_HOST": "wss://that-server-demo.now.sh"
+    }
   },
   "dependencies": {
     "apollo-server-express": "^1.3.4",
