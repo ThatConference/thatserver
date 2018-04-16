@@ -18,7 +18,8 @@
     "validate": "npm-run-all --parallel test lint build",
     "precommit": "npm run validate",
     "deploy": "now -e NODE_ENV=production --token $NOW_TOKEN --npm",
-    "alias": "now alias --token=$NOW_TOKEN"
+    "alias": "now alias --token=$NOW_TOKEN",
+    "now-start": "node ./build"
   },
   "contributors": [
     {
