@@ -75,7 +75,7 @@ ws.listen(PORT, () => {
       subscribe,
       schema,
       onOperation: (message, params, webSocket) => ({
-        params,
+        ...params,
         context: { pubsub },
       }),
     },

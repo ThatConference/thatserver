@@ -1,12 +1,14 @@
+
 {
   "presets": [
     [
       "env",
       {
         "targets": {
-          "node": "8.1"
+          "node": "8.9.2"
         }
-      }
+      },
     ]
-  ]
+  ],
+  "plugins": ["syntax-object-rest-spread"]
 }
