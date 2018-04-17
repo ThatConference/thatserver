@@ -3,13 +3,13 @@ import cors from 'cors';
 import express from 'express';
 import { execute, subscribe } from 'graphql';
 import { express as voyager } from 'graphql-voyager/middleware';
+import { PubSub } from 'graphql-subscriptions';
 import { graphqlExpress, graphiqlExpress } from 'apollo-server-express';
 import { createServer } from 'http';
 import { SubscriptionServer } from 'subscriptions-transport-ws';
 
 import logger from './utilities/logger';
 import schema from './schema';
-import { pubsub } from './subscriptions/pubsub';
 import routes from './api';
 
 const PORT = Number(process.env.PORT || 8000);
@@ -21,9 +21,12 @@ const paths = {
   voyager: '/voyager',
 };
 
+const pubsub = new PubSub();
+
+app.set('pubsub', pubsub);
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-
 app.use('*', cors());
 
 routes(app);
@@ -37,11 +40,10 @@ app.use(
     context: {
       request,
       debug: true,
+      pubsub,
     },
   })),
 );
-
-console.log('WAT', process.env.SUBSCRIPTIONS_HOST);
 
 // Graphiql endpoint
 app.use(
@@ -73,6 +75,10 @@ ws.listen(PORT, () => {
       execute,
       subscribe,
       schema,
+      onOperation: (message, params, webSocket) => ({
+        params,
+        context: { pubsub },
+      }),
     },
     {
       server: ws,
@@ -84,9 +90,8 @@ ws.listen(PORT, () => {
 let x = 0;
 setInterval(() => {
   x += 1;
-  logger.debug(`publishing on the socket: ${x}`);
 
-  pubsub.publish('roomChanged', {
+  pubsub.publish('roomScreenChanged', {
     id: `${x}`,
     name: `${Date.now()}`,
     floor: '1',

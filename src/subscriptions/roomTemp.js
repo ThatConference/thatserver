@@ -2,27 +2,24 @@ import { GraphQLList, GraphQLString } from 'graphql';
 import { withFilter } from 'graphql-subscriptions';
 
 import logger from '../utilities/logger';
-import roomType from '../types/room';
-import { pubsub } from './pubsub';
+import roomTempType from '../types/roomTemp';
 
 const roomTempChanged = {
-  type: roomType,
+  type: roomTempType,
   description: 'Room Temp Subscription',
   args: {},
 
-  resolve: (payload) => {
-    logger.data('resolve payload', payload);
-    return payload;
-  },
+  resolve: payload =>
+  // logger.data('resolve payload', payload);
+    payload,
 
   subscribe: withFilter(
-    () => pubsub.asyncIterator('roomTempChanged'),
-    (payload, variables) => {
-      logger.debug('sub payload', payload);
-      logger.debug('sub vars', variables);
+    (rootValue, args, { pubsub }, info) => pubsub.asyncIterator('roomTempChanged'),
+    (payload, variables) =>
+    // logger.debug('sub payload', payload);
+    // logger.debug('sub vars', variables);
 
-      return true;
-    },
+      true,
   ),
 };
 
