@@ -68,7 +68,6 @@ ws.listen(PORT, () => {
   logger.debug(`listening on: http://localhost:${PORT}`);
 
   // Set up the WebSocket for handling GraphQL subscriptions
-
   // eslint-disable-next-line
     new SubscriptionServer(
     {

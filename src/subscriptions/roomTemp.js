@@ -15,11 +15,13 @@ const roomTempChanged = {
 
   subscribe: withFilter(
     (rootValue, args, { pubsub }, info) => pubsub.asyncIterator('roomTempChanged'),
-    (payload, variables) =>
-    // logger.debug('sub payload', payload);
-    // logger.debug('sub vars', variables);
+    (payload, variables) => {
+      logger.debug('in subscription');
+      // logger.debug('sub payload', payload);
+      // logger.debug('sub vars', variables);
 
-      true,
+      return true;
+    },
   ),
 };
 

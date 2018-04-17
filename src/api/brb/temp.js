@@ -1,7 +1,7 @@
 import logger from '../../utilities/logger';
 
 const post = (request, response) => {
-  // logger.debug('particle temp hook', request.body);
+  logger.debug('particle payload', request.body);
 
   const pubsub = request.app.get('pubsub');
   pubsub.publish('roomTempChanged', request.body);

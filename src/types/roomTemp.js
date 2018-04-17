@@ -11,7 +11,7 @@ const roomTemp = new GraphQLObjectType({
       description: 'TBD',
     },
     data: {
-      type: new GraphQLNonNull(roomTempData),
+      type: roomTempData,
       description: 'TBD',
     },
     published_at: {
