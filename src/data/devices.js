@@ -8,7 +8,7 @@ const deviceIdToRoomId = (deviceId) => {
       return 3;
     case '2c0032001847353236343033': // Banyan tc-4
       return 4;
-    case '370037001747353236343033': // C tc-5
+    case '2d0043001047343438323536': // C tc-5
       return 5;
     case '260020001447353236343033': // Cypress tc-6
       return 6;
@@ -20,7 +20,7 @@ const deviceIdToRoomId = (deviceId) => {
       return 9;
     case '1b0026001247353236343033': // G tc-10
       return 10;
-    case '2a0026001447353236343033': // Guava tc-11
+    case '2a0026001447353236343033': // Marula tc-11
       return 11;
     case '29002c001847353236343033': // Portia tc-12
       return 12;

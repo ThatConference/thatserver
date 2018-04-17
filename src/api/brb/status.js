@@ -1,7 +1,7 @@
 import logger from '../../utilities/logger';
 
 const post = (request, response) => {
-  logger.debug('particle status payload', request.body);
+  // logger.debug('button', request.body.coreid);
 
   const pubsub = request.app.get('pubsub');
   pubsub.publish('speakerStatusChanged', request.body);

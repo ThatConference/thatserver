@@ -121,8 +121,8 @@ export default [
   },
   {
     id: 11,
-    deviceId: '2a0026001447353236343033', // Guava tc-11
-    name: 'Guava',
+    deviceId: '2a0026001447353236343033', // Marula tc-11
+    name: 'Marula',
     floor: '1',
     building: 'Main Convention Center',
     session: {
