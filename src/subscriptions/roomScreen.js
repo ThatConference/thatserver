@@ -5,9 +5,9 @@ import logger from '../utilities/logger';
 import roomType from '../types/room';
 import { pubsub } from './pubsub';
 
-const roomChanged = {
+const roomScreenChanged = {
   type: roomType,
-  description: 'The room subscription',
+  description: 'Room Screen Subscription',
   args: {
     roomId: {
       type: GraphQLString,
@@ -20,7 +20,7 @@ const roomChanged = {
   },
 
   subscribe: withFilter(
-    () => pubsub.asyncIterator('roomChanged'),
+    () => pubsub.asyncIterator('roomScreenChanged'),
     (payload, variables) => {
       logger.debug('sub payload', payload);
       logger.debug('sub vars', variables);
@@ -31,4 +31,4 @@ const roomChanged = {
 };
 
 // eslint-disable-next-line
-export { roomChanged };
+export { roomScreenChanged };

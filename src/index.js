@@ -10,9 +10,10 @@ import { SubscriptionServer } from 'subscriptions-transport-ws';
 import logger from './utilities/logger';
 import schema from './schema';
 import { pubsub } from './subscriptions/pubsub';
+import routes from './api';
 
 const PORT = Number(process.env.PORT || 8000);
-const server = express();
+const app = express();
 
 const paths = {
   graphql: '/graphql',
@@ -20,10 +21,15 @@ const paths = {
   voyager: '/voyager',
 };
 
-server.use('*', cors());
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+
+app.use('*', cors());
+
+routes(app);
 
 // The main GraphQL endpoint
-server.use(
+app.use(
   paths.graphql,
   bodyParser.json(),
   graphqlExpress(async (request, response) => ({
@@ -35,8 +41,10 @@ server.use(
   })),
 );
 
+console.log('WAT', process.env.SUBSCRIPTIONS_HOST);
+
 // Graphiql endpoint
-server.use(
+app.use(
   paths.graphiql,
   graphiqlExpress({
     endpointURL: paths.graphql,
@@ -45,7 +53,7 @@ server.use(
 );
 
 // Voyager ( data viz ) endpoint
-server.use(
+app.use(
   paths.voyager,
   voyager({
     endpointUrl: paths.graphql,
@@ -53,7 +61,7 @@ server.use(
 );
 
 // Wrap the Express server
-const ws = createServer(server);
+const ws = createServer(app);
 ws.listen(PORT, () => {
   logger.debug(`listening on: http://localhost:${PORT}`);
 

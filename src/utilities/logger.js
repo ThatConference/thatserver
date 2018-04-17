@@ -1,4 +1,4 @@
-import * as Winston from 'winston';
+import Winston from 'winston';
 
 const logger = new Winston.Logger({
   levels: {

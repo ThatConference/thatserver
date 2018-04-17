@@ -1,5 +1,8 @@
 {
   "events": {
     "start": "jest --notify"
-  }
+  },
+  "env": {
+    "SUBSCRIPTIONS_HOST": "ws://localhost"
+}
 }
