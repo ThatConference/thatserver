@@ -2,27 +2,7 @@ import { GraphQLList } from 'graphql';
 
 import logger from '../utilities/logger';
 import roomType from '../types/room';
-
-const mockData = [
-  {
-    id: '1',
-    name: 'A',
-    floor: '1',
-    building: 'Main Convention Center',
-  },
-  {
-    id: '2',
-    name: 'B',
-    floor: '1',
-    building: 'Main Convention Center',
-  },
-  {
-    id: '3',
-    name: 'C',
-    floor: '1',
-    building: 'Main Convention Center',
-  },
-];
+import mockData from '../data/room';
 
 const rooms = {
   type: new GraphQLList(roomType),

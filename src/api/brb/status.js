@@ -16,12 +16,14 @@ export { post };
 
 sample payload
 
-{ event: 'ThatConferenceRoomEvent-NeedHelp',
-  data: 'GREEN',
-  published_at: '2018-04-17T00:44:26.797Z',
-  coreid: '2a0026001447353236343033',
-  userid: '5962b1fc60716d4cb00abd4e',
-  fw_version: 34,
-  public: true }
+{
+  "event": "ThatConferenceRoomEvent-NeedHelp",
+  "data": "GREEN",
+  "published_at": "2018-04-17T00:44:26.797Z",
+  "coreid": "2a0026001447353236343033",
+  "userid": "5962b1fc60716d4cb00abd4e",
+  "fw_version": 34,
+  "public": true
+}
 
 */

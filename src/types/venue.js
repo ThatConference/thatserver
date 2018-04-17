@@ -1,13 +1,9 @@
-import { GraphQLObjectType, GraphQLID, GraphQLNonNull, GraphQLString } from 'graphql';
+import { GraphQLObjectType, GraphQLNonNull, GraphQLString } from 'graphql';
 
 const location = new GraphQLObjectType({
-  name: 'Location',
+  name: 'Venue',
   description: 'Venues, Resorts, Colleges, aka Locations',
   fields: () => ({
-    id: {
-      type: new GraphQLNonNull(GraphQLID),
-      description: 'Unique ID of a physical location or venue.',
-    },
     name: {
       type: new GraphQLNonNull(GraphQLString),
       description: 'Location Name',

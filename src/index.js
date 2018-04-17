@@ -86,18 +86,18 @@ ws.listen(PORT, () => {
   );
 });
 
-let x = 0;
-setInterval(() => {
-  x += 1;
+// let x = 0;
+// setInterval(() => {
+//   x += 1;
 
-  pubsub.publish('roomScreenChanged', {
-    id: `${x}`,
-    name: `${Date.now()}`,
-    floor: '1',
-    building: 'asdf',
-  });
+//   pubsub.publish('roomScreenChanged', {
+//     id: `${x}`,
+//     name: `${Date.now()}`,
+//     floor: '1',
+//     building: 'asdf',
+//   });
 
-  if (x > 300) {
-    x = 1;
-  }
-}, 5000);
+//   if (x > 300) {
+//     x = 1;
+//   }
+// }, 5000);

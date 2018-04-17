@@ -1,6 +1,7 @@
 import { GraphQLObjectType, GraphQLID, GraphQLNonNull, GraphQLString } from 'graphql';
 
-import location from './location';
+import venueLocation from './venue';
+import sessionType from './session';
 
 const room = new GraphQLObjectType({
   name: 'Room',
@@ -10,10 +11,22 @@ const room = new GraphQLObjectType({
       type: new GraphQLNonNull(GraphQLID),
       description: 'Unique ID of a room. Some rooms might have the same name but different locations.',
     },
+
+    deviceId: {
+      type: new GraphQLNonNull(GraphQLString),
+      description: 'Big Red Button device assigned to this room.',
+    },
+
     name: {
       type: new GraphQLNonNull(GraphQLString),
       description: 'The friendly name of a Room.',
     },
+
+    session: {
+      type: sessionType,
+      description: 'The session listed for this room',
+    },
+
     floor: {
       type: new GraphQLNonNull(GraphQLString),
       description: 'The floor or level this room is on.',
@@ -22,10 +35,11 @@ const room = new GraphQLObjectType({
       type: new GraphQLNonNull(GraphQLString),
       description: 'The building this room is location inside of.',
     },
-    // location: {
-    //   type: location,
-    //   description: 'The location this room is part of.',
-    // },
+
+    venue: {
+      type: venueLocation,
+      description: 'Rooms Location',
+    },
   }),
 });
 

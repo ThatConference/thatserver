@@ -19,12 +19,12 @@ export { post };
 
 sample payload
 
-{ event: 'ThatConferenceRoomEvent-Temp',
-  data: '{"dhtTemperature":69.980003,"dhtHumidity":42.099998,"tmp36Temperature":70.373626}',
-  published_at: '2018-04-17T00:44:13.243Z',
-  coreid: '2a0026001447353236343033',
-  userid: '5962b1fc60716d4cb00abd4e',
-  fw_version: 34,
-  public: true }
+{ "event": "ThatConferenceRoomEvent-Temp",
+  "data": {"dhtTemperature":99.980003,"dhtHumidity":422.099998,"tmp36Temperature":70.373626},
+  "published_at": "2018-04-17T00:44:13.243Z",
+  "coreid": "2a0026001447353236343033",
+  "userid": "5962b1fc60716d4cb00abd4e",
+  "fw_version": 34,
+  "public": true }
 
 */
