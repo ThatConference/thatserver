@@ -2,11 +2,15 @@ import logger from '../../utilities/logger';
 
 const post = (request, response) => {
   logger.debug('particle payload data', request.body.data);
-  logger.debug('particle payload', JSON.strinify(request.body));
+  logger.debug('particle payload data', JSON.parse(request.body.data));
+
+  logger.debug('particle payload', JSON.stringify(request.body));
+
+  const newPayload = request.body;
+  newPayload.data = JSON.parse(request.body.data);
 
   const pubsub = request.app.get('pubsub');
-
-  pubsub.publish('roomTempChanged', request.body);
+  pubsub.publish('roomTempChanged', newPayload);
 
   response.sendStatus(200);
 };
