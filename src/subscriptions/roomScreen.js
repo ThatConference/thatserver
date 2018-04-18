@@ -13,10 +13,9 @@ const roomScreenChanged = {
     },
   },
 
-  resolve: (payload) => {
-    logger.data('resolve payload', payload);
-    return payload;
-  },
+  resolve: payload =>
+    // logger.data('resolve payload', payload);
+    payload,
 
   subscribe: withFilter(
     (rootValue, args, { pubsub }, info) => pubsub.asyncIterator('roomScreenChanged'),

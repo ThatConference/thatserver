@@ -16,7 +16,7 @@ const speakerStatusChanged = {
   },
 
   resolve: payload =>
-  // logger.data('resolve payload', payload);
+    // logger.data('resolve payload', payload);
     payload,
 
   subscribe: withFilter(
