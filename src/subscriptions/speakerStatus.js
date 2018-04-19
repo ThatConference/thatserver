@@ -21,7 +21,14 @@ const speakerStatusChanged = {
 
   subscribe: withFilter(
     (rootValue, args, { pubsub }, info) => pubsub.asyncIterator('speakerStatusChanged'),
-    (payload, variables) => variables.roomId === deviceData.deviceIdToRoomId(payload.coreid),
+    (payload, variables) => {
+      // return all no matter what
+      if (variables.roomId === 0) {
+        return true;
+      }
+
+      return variables.roomId === deviceData.deviceIdToRoomId(payload.coreid);
+    },
 
     // {
     //   // logger.debug('sub payload', payload);
