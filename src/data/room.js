@@ -144,7 +144,7 @@ export default [
     },
   },
   {
-    id: 1,
+    id: 13,
     deviceId: '350029001247353236343033', // Tamarind tc-13
     name: 'Tamarind',
     floor: '1',
