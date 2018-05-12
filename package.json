@@ -12,15 +12,14 @@
     "start": "node ./index",
     "start:watch": "nodemon ./src/index.js --exec babel-node",
     "build": "babel ./src -d ./build",
-    "now-build": "./node_modules/.bin/babel ./src -d ./build",
     "test": "jest --coverage",
     "test:watch": "jest --watchAll --coverage",
     "lint": "eslint -c ./.eslintrc.json ./src",
     "validate": "npm-run-all --parallel test lint build",
     "precommit": "npm run validate",
-    "deploy": "now -e NODE_ENV=production --token $NOW_TOKEN --npm",
+    "deploy": "now ./build -e NODE_ENV=production --token $NOW_TOKEN --npm",
     "alias": "now alias --token=$NOW_TOKEN",
-    "now-start": "node ./build"
+    "now-start": "node ./index"
   },
   "contributors": [
     {
@@ -44,6 +43,12 @@
     "env": {
       "SUBSCRIPTIONS_HOST": "wss://that-server-demo.now.sh",
       "PORT": "443"
+    },
+    "scale": {
+      "sfo1": {
+        "min": 1,
+        "max": "auto"
+      }
     }
   },
   "dependencies": {
