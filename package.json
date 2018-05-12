@@ -12,6 +12,7 @@
     "start": "node ./index",
     "start:watch": "nodemon ./src/index.js --exec babel-node",
     "build": "babel ./src -d ./build",
+    "now-build": "./node_modules/.bin/babel ./src -d ./build",
     "test": "jest --coverage",
     "test:watch": "jest --watchAll --coverage",
     "lint": "eslint -c ./.eslintrc.json ./src",
