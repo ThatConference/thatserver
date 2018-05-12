@@ -3,6 +3,7 @@ import room from './room';
 import roomTemp from './roomTemp';
 import speakerStatus from './speakerStatus';
 import session from './session';
+import device from './device';
 
 module.exports = {
   venue,
@@ -10,4 +11,5 @@ module.exports = {
   roomTemp,
   speakerStatus,
   session,
+  device,
 };
