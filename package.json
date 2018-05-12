@@ -19,7 +19,7 @@
     "precommit": "npm run validate",
     "deploy": "now --token $NOW_TOKEN --npm",
     "alias": "now alias --token=$NOW_TOKEN",
-    "now-start": "node ./index"
+    "now-start": "node ./build/index"
   },
   "contributors": [
     {
