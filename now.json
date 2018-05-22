@@ -1,0 +1,11 @@
+{
+  "env": {
+    "SUBSCRIPTIONS_HOST": "wss://api.thatconference.com",
+    "PORT": "443",
+    "PRIVATE_KEY_ID": "@that_server_private_key_id",
+    "PRIVATE_KEY": "@that_server_private_key",
+    "CLIENT_EMAIL": "@that_server_client_email",
+    "CLIENT_ID": "@that_server_client_id",
+    "CLIENT_X509_CERT_URL": "@that_server_client_x509_cert_url"
+  }
+}

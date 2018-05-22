@@ -67,4 +67,5 @@ build/
 private/
 
 # ignore the private key for firebase
-*.privateKey.json
+*.private.json
+*.private.cert
