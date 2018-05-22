@@ -11,7 +11,7 @@
   "scripts": {
     "start": "node ./index",
     "start:watch": "nodemon ./src/index.js --exec babel-node",
-    "build": "babel ./src -d ./build --ignore __test__ --copy-files",
+    "build": "babel ./src -d ./build --ignore __test__",
     "test": "jest --coverage",
     "test:watch": "jest --watchAll --coverage",
     "lint": "eslint -c ./.eslintrc.json ./src",
