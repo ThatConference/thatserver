@@ -1,4 +1,12 @@
 {
+  "name": "that-server",
+  "alias": "api.thatconference.com",
+  "scale": {
+    "sfo1": {
+      "min": 1,
+      "max": "auto"
+    }
+  },
   "env": {
     "SUBSCRIPTIONS_HOST": "wss://api.thatconference.com",
     "PORT": "443",
