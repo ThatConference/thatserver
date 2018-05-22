@@ -1,14 +1,12 @@
 import { GraphQLList } from 'graphql';
 
 import deviceType from '../types/device';
-import { roomMappings } from '../data/devices';
 
 const devices = {
   type: new GraphQLList(deviceType),
   description: 'The room query will return you all active devices.',
   args: {},
-  resolve: (root, args, { db }, fieldASTs) =>
-    // roomMappings.forEach(room => db.collection('buttons').add(room)),
+  resolve: (root, args, { db }) =>
     db
       .collection('buttons')
       .orderBy('roomName')
@@ -20,4 +18,5 @@ const devices = {
       }),
 };
 
+// eslint-disable-next-line
 export { devices };

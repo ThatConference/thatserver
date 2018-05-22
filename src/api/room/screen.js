@@ -1,7 +1,7 @@
 import logger from '../../utilities/logger';
 
 const post = (request, response) => {
-  logger.debug(`session update for ${request.body.id} : ${request.body.name}`);
+  logger.trace(`session update for ${request.body.id} : ${request.body.name}`);
 
   const pubsub = request.app.get('pubsub');
   pubsub.publish('roomScreenChanged', request.body);

@@ -1,7 +1,6 @@
-import { GraphQLString, GraphQLInt } from 'graphql';
+import { GraphQLInt } from 'graphql';
 import { withFilter } from 'graphql-subscriptions';
 
-import logger from '../utilities/logger';
 import roomType from '../types/room';
 
 const roomScreenChanged = {
@@ -13,12 +12,10 @@ const roomScreenChanged = {
     },
   },
 
-  resolve: payload =>
-    // logger.data('resolve payload', payload);
-    payload,
+  resolve: payload => payload,
 
   subscribe: withFilter(
-    (rootValue, args, { pubsub }, info) => pubsub.asyncIterator('roomScreenChanged'),
+    (rootValue, args, { pubsub }) => pubsub.asyncIterator('roomScreenChanged'),
     (payload, variables) => variables.roomId === payload.id,
   ),
 };

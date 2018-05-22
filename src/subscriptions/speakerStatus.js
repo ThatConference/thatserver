@@ -15,13 +15,13 @@ const speakerStatusChanged = {
     },
   },
 
-  resolve: payload =>
-    // logger.data('resolve payload', payload);
-    payload,
+  resolve: payload => payload,
 
   subscribe: withFilter(
-    (rootValue, args, { pubsub }, info) => pubsub.asyncIterator('speakerStatusChanged'),
+    (rootValue, args, { pubsub }) => pubsub.asyncIterator('speakerStatusChanged'),
     (payload, variables) => {
+      logger.trace('Speaker Status Subscription');
+
       // return all no matter what
       if (variables.roomId === 0) {
         return true;
@@ -29,12 +29,6 @@ const speakerStatusChanged = {
 
       return variables.roomId === deviceData.deviceIdToRoomId(payload.coreid);
     },
-
-    // {
-    //   // logger.debug('sub payload', payload);
-    //   // logger.debug('sub vars', variables);
-    //   return variables.roomId === deviceData.deviceIdToRoomId( payload.coreid);;
-    // },
   ),
 };
 

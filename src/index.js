@@ -69,7 +69,7 @@ app.use(
 // Wrap the Express server
 const ws = createServer(app);
 ws.listen(PORT, () => {
-  logger.debug(`listening on: http://localhost:${PORT}`);
+  logger.info(`listening on: ${process.env.SUBSCRIPTIONS_HOST}:${PORT}`);
 
   // Set up the WebSocket for handling GraphQL subscriptions
   // eslint-disable-next-line
@@ -78,7 +78,7 @@ ws.listen(PORT, () => {
       execute,
       subscribe,
       schema,
-      onOperation: (message, params, webSocket) => ({
+      onOperation: (message, params) => ({
         ...params,
         context: { pubsub },
       }),

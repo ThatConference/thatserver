@@ -1,7 +1,7 @@
 import logger from '../../utilities/logger';
 
 const post = (request, response) => {
-  // logger.debug('particle payload data', request.body.data);
+  logger.trace('particle payload data', request.body.data);
 
   const newPayload = request.body;
   newPayload.data = JSON.parse(request.body.data);

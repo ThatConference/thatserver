@@ -1,4 +1,3 @@
-import { GraphQLList, GraphQLString } from 'graphql';
 import { withFilter } from 'graphql-subscriptions';
 
 import logger from '../utilities/logger';
@@ -9,17 +8,13 @@ const roomTempChanged = {
   description: 'Room Temp Subscription',
   args: {},
 
-  resolve: payload =>
-  // logger.data('resolve payload', payload);
-    payload,
+  resolve: payload => payload,
 
   subscribe: withFilter(
-    (rootValue, args, { pubsub }, info) => pubsub.asyncIterator('roomTempChanged'),
+    (rootValue, args, { pubsub }) => pubsub.asyncIterator('roomTempChanged'),
+    // eslint-disable-next-line
     (payload, variables) => {
-      logger.debug('in subscription');
-      // logger.debug('sub payload', payload);
-      // logger.debug('sub vars', variables);
-
+      logger.trace('Room Temp Subscription');
       return true;
     },
   ),

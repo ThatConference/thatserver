@@ -1,7 +1,7 @@
 import logger from '../../utilities/logger';
 
 const post = (request, response) => {
-  // logger.debug('button', request.body.coreid);
+  logger.trace('button', request.body.coreid);
 
   const pubsub = request.app.get('pubsub');
   pubsub.publish('speakerStatusChanged', request.body);
