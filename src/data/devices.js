@@ -37,217 +37,217 @@ const roomMappings = [
   {
     coreId: '310021001747353236343033',
     roomName: 'Aralia',
-    particleId: 'tc-1',
+    particleName: 'tc-1',
     isAssigned: true,
-    id: 1,
+    tcId: 1,
   },
 
   {
     coreId: '210033001747353236343033',
     roomName: 'Aloeswood',
-    particleId: 'tc-2',
+    particleName: 'tc-2',
     isAssigned: true,
-    id: 2,
+    tcId: 2,
   },
 
   {
     coreId: '330024000b47353235303037',
     roomName: 'B',
-    particleId: 'tc-3',
+    particleName: 'tc-3',
     isAssigned: true,
-    id: 3,
+    tcId: 3,
   },
 
   {
     coreId: '2c0032001847353236343033',
     roomName: 'Banyan',
-    particleId: 'tc-4',
+    particleName: 'tc-4',
     isAssigned: true,
-    id: 4,
+    tcId: 4,
   },
 
   {
     coreId: '2d0043001047343438323536',
     roomName: 'C',
-    particleId: 'tc-5',
+    particleName: 'tc-5',
     isAssigned: true,
-    id: 5,
+    tcId: 5,
   },
 
   {
     coreId: '260020001447353236343033',
     roomName: 'Cypress',
-    particleId: 'tc-6',
+    particleName: 'tc-6',
     isAssigned: true,
-    id: 6,
+    tcId: 6,
   },
 
   {
     coreId: '1c0027001947353236343033',
     roomName: 'D',
-    particleId: 'tc-7',
+    particleName: 'tc-7',
     isAssigned: true,
-    id: 7,
+    tcId: 7,
   },
 
   {
     coreId: '2b003b001247353236343033',
     roomName: 'E',
-    particleId: 'tc-8',
+    particleName: 'tc-8',
     isAssigned: true,
-    id: 8,
+    tcId: 8,
   },
 
   {
     coreId: '1a0028001747353236343033',
     roomName: 'F',
-    particleId: 'tc-9',
+    particleName: 'tc-9',
     isAssigned: true,
-    id: 9,
+    tcId: 9,
   },
 
   {
     coreId: '1b0026001247353236343033',
     roomName: 'G',
-    particleId: 'tc-10',
+    particleName: 'tc-10',
     isAssigned: true,
-    id: 10,
+    tcId: 10,
   },
 
   {
     coreId: '2a0026001447353236343033',
     roomName: 'Marula',
-    particleId: 'tc-11',
+    particleName: 'tc-11',
     isAssigned: true,
-    id: 11,
+    tcId: 11,
   },
 
   {
     coreId: '29002c001847353236343033',
     roomName: 'Portia',
-    particleId: 'tc-12',
+    particleName: 'tc-12',
     isAssigned: true,
-    id: 12,
+    tcId: 12,
   },
 
   {
     coreId: '350029001247353236343033',
     roomName: 'Tamarind',
-    particleId: 'tc-13',
+    particleName: 'tc-13',
     isAssigned: true,
-    id: 13,
+    tcId: 13,
   },
 
   {
     coreId: '26003e001647353236343033',
     roomName: 'Wisteria',
-    particleId: 'tc-14',
+    particleName: 'tc-14',
     isAssigned: true,
-    id: 14,
+    tcId: 14,
   },
 
   {
     coreId: '300035000347353137323334',
     roomName: 'Crown Palm',
-    particleId: 'tc-15',
+    particleName: 'tc-15',
     isAssigned: true,
-    id: 15,
+    tcId: 15,
   },
 
   {
     coreId: 'xxxxx',
     roomName: 'Acacia',
-    particleId: 'tc-xx',
+    particleName: 'tc-xx',
     isAssigned: true,
-    id: 16,
+    tcId: 16,
   },
 
   {
     coreId: 'xxxxx',
     roomName: 'Bamboo',
-    particleId: 'tc-xx',
+    particleName: 'tc-xx',
     isAssigned: true,
-    id: 17,
+    tcId: 17,
   },
 
   {
     coreId: 'xxxxx',
     roomName: 'Ironwood',
-    particleId: 'tc-xx',
+    particleName: 'tc-xx',
     isAssigned: true,
-    id: 18,
+    tcId: 18,
   },
 
   {
     coreId: 'xxxxx',
     roomName: 'A',
-    particleId: 'tc-xx',
+    particleName: 'tc-xx',
     isAssigned: true,
-    id: 19,
+    tcId: 19,
   },
 
   {
     coreId: 'xxxxx',
     roomName: 'H',
-    particleId: 'tc-xx',
+    particleName: 'tc-xx',
     isAssigned: false,
-    id: 19,
+    tcId: 19,
   },
 
   {
     coreId: 'xxxxx',
     roomName: 'Keynote',
-    particleId: 'tc-xx',
+    particleName: 'tc-xx',
     isAssigned: true,
-    id: 20,
+    tcId: 20,
   },
 
   {
     coreId: 'xxxxx',
     roomName: 'Empress',
-    particleId: 'tc-xx',
+    particleName: 'tc-xx',
     isAssigned: true,
-    id: 21,
+    tcId: 21,
   },
 
   {
     coreId: 'xxxxx',
     roomName: 'Ebony',
-    particleId: 'tc-xx',
+    particleName: 'tc-xx',
     isAssigned: true,
-    id: 22,
+    tcId: 22,
   },
 
   {
     coreId: 'xxxxx',
     roomName: 'Guava',
-    particleId: 'tc-xx',
+    particleName: 'tc-xx',
     isAssigned: true,
-    id: 23,
+    tcId: 23,
   },
 
   {
     coreId: 'xxxxx',
     roomName: 'Tamboti',
-    particleId: 'tc-xx',
+    particleName: 'tc-xx',
     isAssigned: true,
-    id: 24,
+    tcId: 24,
   },
 
   {
     coreId: 'xxxxx',
     roomName: 'Mangrove',
-    particleId: 'tc-xx',
+    particleName: 'tc-xx',
     isAssigned: true,
-    id: 25,
+    tcId: 25,
   },
 
   {
     coreId: 'xxxxx',
     roomName: 'Open Spaces',
-    particleId: 'tc-xx',
+    particleName: 'tc-xx',
     isAssigned: true,
-    id: 26,
+    tcId: 26,
   },
 ];
 

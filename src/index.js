@@ -8,6 +8,7 @@ import { graphqlExpress, graphiqlExpress } from 'apollo-server-express';
 import { createServer } from 'http';
 import { SubscriptionServer } from 'subscriptions-transport-ws';
 
+import db from './data/firebase';
 import logger from './utilities/logger';
 import schema from './schema';
 import routes from './api';
@@ -39,6 +40,7 @@ app.use(
     schema,
     context: {
       request,
+      db,
       debug: true,
       pubsub,
     },
@@ -69,7 +71,7 @@ ws.listen(PORT, () => {
 
   // Set up the WebSocket for handling GraphQL subscriptions
   // eslint-disable-next-line
-    new SubscriptionServer(
+  new SubscriptionServer(
     {
       execute,
       subscribe,
@@ -85,19 +87,3 @@ ws.listen(PORT, () => {
     },
   );
 });
-
-// let x = 0;
-// setInterval(() => {
-//   x += 1;
-
-//   pubsub.publish('roomScreenChanged', {
-//     id: `${x}`,
-//     name: `${Date.now()}`,
-//     floor: '1',
-//     building: 'asdf',
-//   });
-
-//   if (x > 300) {
-//     x = 1;
-//   }
-// }, 5000);

@@ -1,17 +1,23 @@
-import { GraphQLObjectType, GraphQLID, GraphQLNonNull, GraphQLString } from 'graphql';
+import {
+  GraphQLObjectType,
+  GraphQLID,
+  GraphQLNonNull,
+  GraphQLString,
+  GraphQLBoolean,
+} from 'graphql';
 
 const device = new GraphQLObjectType({
   name: 'Device',
-  description: "Everything you've ever wanted about the BRB Device.",
+  description: "Everything you've ever wanted about the Big Red Button Devices.",
   fields: () => ({
-    id: {
+    tcId: {
       type: new GraphQLNonNull(GraphQLID),
-      description: 'THAT Conference unique id',
+      description: 'THAT Conference unique id.',
     },
 
     coreId: {
       type: new GraphQLNonNull(GraphQLID),
-      description: 'the particle core id of the device',
+      description: 'The Particle core id of this device.',
     },
 
     roomName: {
@@ -19,9 +25,14 @@ const device = new GraphQLObjectType({
       description: 'Venue Friendly Room Name',
     },
 
-    particleId: {
+    particleName: {
       type: GraphQLID,
-      description: 'THAT Conference assigned Particle Device Id.',
+      description: 'THAT Conference assigned Particle Device name listed in the Particle Cloud.',
+    },
+
+    isAssigned: {
+      type: GraphQLBoolean,
+      description: 'Tells you if this device has been assigned for usage.',
     },
   }),
 });
