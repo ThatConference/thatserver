@@ -13,7 +13,7 @@ const devices = {
       .get()
       .then((docs) => {
         const results = [];
-        docs.forEach(doc => results.push(doc.data()));
+        docs.forEach(doc => results.push({ id: doc.id, ...doc.data() }));
         return results;
       }),
 };

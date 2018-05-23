@@ -10,9 +10,14 @@ const device = new GraphQLObjectType({
   name: 'Device',
   description: "Everything you've ever wanted about the Big Red Button Devices.",
   fields: () => ({
+    id: {
+      type: new GraphQLNonNull(GraphQLID),
+      description: 'Just a unique id.',
+    },
+
     tcId: {
       type: new GraphQLNonNull(GraphQLID),
-      description: 'THAT Conference unique id.',
+      description: 'THAT Conference assigned id.',
     },
 
     coreId: {
