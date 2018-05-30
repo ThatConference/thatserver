@@ -1,17 +1,5 @@
 import logger from '../../utilities/logger';
 
-const post = (request, response) => {
-  logger.trace('button', request.body.coreid);
-
-  const pubsub = request.app.get('pubsub');
-  pubsub.publish('speakerStatusChanged', request.body);
-
-  response.sendStatus(200);
-};
-
-// eslint-disable-next-line
-export { post };
-
 /*
 
 sample payload
@@ -27,3 +15,15 @@ sample payload
 }
 
 */
+
+const post = (request, response) => {
+  logger.trace('button', request.body.coreid);
+
+  const pubsub = request.app.get('pubsub');
+  pubsub.publish('speakerStatusChanged', request.body);
+
+  response.sendStatus(200);
+};
+
+// eslint-disable-next-line
+export { post };
