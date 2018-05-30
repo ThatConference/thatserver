@@ -14,6 +14,8 @@
     "PRIVATE_KEY": "@that_server_private_key",
     "CLIENT_EMAIL": "@that_server_client_email",
     "CLIENT_ID": "@that_server_client_id",
-    "CLIENT_X509_CERT_URL": "@that_server_client_x509_cert_url"
+    "CLIENT_X509_CERT_URL": "@that_server_client_x509_cert_url",
+    "PARTICLE_TOKEN": "@particle_token",
+    "LOG_LEVEL": "info"
   }
 }
