@@ -13,7 +13,7 @@
     "start:watch": "nodemon ./src/index.js --exec babel-node",
     "build": "babel ./src -d ./build --ignore __test__",
     "test": "jest --coverage",
-    "test:watch": "jest --watchAll --coverage",
+    "test:watch": "jest --watchAll",
     "lint": "eslint -c ./.eslintrc.json ./src",
     "validate": "npm-run-all --parallel test lint build",
     "precommit": "npm run validate",
@@ -52,8 +52,10 @@
     "lodash": "^4.17.10",
     "moment": "^2.22.1",
     "mongoose": "^5.1.0",
+    "node-cache": "^4.2.0",
     "request-promise": "^4.2.2",
     "subscriptions-transport-ws": "^0.9.9",
+    "twilio": "^3.17.1",
     "winston": "^2.4.2"
   },
   "optionalDependencies": {

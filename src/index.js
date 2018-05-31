@@ -7,6 +7,7 @@ import { execute, subscribe } from 'graphql';
 import { express as voyager } from 'graphql-voyager/middleware';
 import { PubSub } from 'graphql-subscriptions';
 import { graphqlExpress, graphiqlExpress } from 'apollo-server-express';
+import Cache from 'node-cache';
 import { createServer } from 'http';
 import { SubscriptionServer } from 'subscriptions-transport-ws';
 
@@ -24,9 +25,12 @@ const paths = {
   voyager: '/voyager',
 };
 
+const cache = new Cache({ checkperiod: 2 });
 const pubsub = new PubSub();
 
 app.set('pubsub', pubsub);
+app.set('cache', cache);
+app.set('db', db);
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
