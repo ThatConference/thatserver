@@ -20,7 +20,9 @@ const post = (request, response) => {
   const cache = request.app.get('cache');
   const db = request.app.get('db');
 
-  messaging(cache, request.body.coreid, db).send();
+  if (request.body.data.toUpperCase() === 'RED') {
+    messaging(cache, request.body.coreid, db).send();
+  }
 
   const pubsub = request.app.get('pubsub');
   pubsub.publish('speakerStatusChanged', request.body);
