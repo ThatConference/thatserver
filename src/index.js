@@ -13,7 +13,7 @@ import { SubscriptionServer } from 'subscriptions-transport-ws';
 
 import db from './data/firebase';
 import logger from './utilities/logger';
-import schema from './schema';
+import schema from './graphql';
 import routes from './api';
 
 const PORT = Number(process.env.PORT || 8000);
@@ -49,6 +49,7 @@ app.use(
       db,
       debug: true,
       pubsub,
+      cache,
     },
   })),
 );
@@ -84,7 +85,11 @@ ws.listen(PORT, () => {
       schema,
       onOperation: (message, params) => ({
         ...params,
-        context: { pubsub },
+        context: {
+          pubsub,
+          cache,
+          db,
+        },
       }),
     },
     {

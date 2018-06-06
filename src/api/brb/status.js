@@ -15,7 +15,7 @@ sample payload
 */
 
 const post = (request, response) => {
-  logger.trace('button', request.body.coreid);
+  logger.trace('button coreId:', request.body.coreid);
 
   const cache = request.app.get('cache');
   const db = request.app.get('db');

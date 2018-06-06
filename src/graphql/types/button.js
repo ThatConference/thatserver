@@ -6,8 +6,8 @@ import {
   GraphQLBoolean,
 } from 'graphql';
 
-const device = new GraphQLObjectType({
-  name: 'Device',
+const button = new GraphQLObjectType({
+  name: 'Button',
   description: "Everything you've ever wanted about the Big Red Button Devices.",
   fields: () => ({
     id: {
@@ -42,4 +42,4 @@ const device = new GraphQLObjectType({
   }),
 });
 
-export default device;
+export default button;

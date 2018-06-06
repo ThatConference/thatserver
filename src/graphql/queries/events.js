@@ -1,15 +1,16 @@
 import { GraphQLList } from 'graphql';
 
-import deviceType from '../types/device';
+import eventType from '../types/event';
 
-const devices = {
-  type: new GraphQLList(deviceType),
-  description: 'The room query will return you all active devices.',
+const events = {
+  type: new GraphQLList(eventType),
+  description: 'The query returns you all events.',
   args: {},
+
   resolve: (root, args, { db }) =>
     db
-      .collection('buttons')
-      .orderBy('roomName')
+      .collection('events')
+      .orderBy('startDate')
       .get()
       .then((docs) => {
         const results = [];
@@ -19,4 +20,4 @@ const devices = {
 };
 
 // eslint-disable-next-line
-export { devices };
+export { events };

@@ -8,13 +8,9 @@ const location = new GraphQLObjectType({
       type: new GraphQLNonNull(GraphQLString),
       description: 'Location Name',
     },
-    addressLineOne: {
+    address: {
       type: GraphQLString,
       description: 'Address line 1.',
-    },
-    addressLineTwo: {
-      type: GraphQLString,
-      description: 'Address line 2.',
     },
     city: {
       type: GraphQLString,

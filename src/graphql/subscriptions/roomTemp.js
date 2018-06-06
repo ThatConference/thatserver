@@ -1,6 +1,6 @@
 import { withFilter } from 'graphql-subscriptions';
 
-import logger from '../utilities/logger';
+import logger from '../../utilities/logger';
 import roomTempType from '../types/roomTemp';
 
 const roomTempChanged = {

@@ -2,13 +2,16 @@ import * as _ from 'lodash';
 import { GraphQLSchema, GraphQLObjectType } from 'graphql';
 
 import * as roomQuery from './queries/rooms';
-import * as deviceQuery from './queries/devices';
+import * as buttonsQuery from './queries/buttons';
+import * as speakersQuery from './queries/speakers';
+import * as eventsQuery from './queries/events';
+import * as sessionsQuery from './queries/sessions';
 
 import * as roomScreenSubscription from './subscriptions/roomScreen';
 import * as roomTempSubscription from './subscriptions/roomTemp';
 import * as speakerStatusSubscription from './subscriptions/speakerStatus';
 
-const queries = _.merge(roomQuery, deviceQuery);
+const queries = _.merge(roomQuery, buttonsQuery, speakersQuery, eventsQuery, sessionsQuery);
 
 // eslint-disable-next-line
 const subscriptions = _.merge(

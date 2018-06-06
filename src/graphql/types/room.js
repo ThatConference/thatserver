@@ -9,7 +9,8 @@ const room = new GraphQLObjectType({
   fields: () => ({
     id: {
       type: new GraphQLNonNull(GraphQLID),
-      description: 'Unique ID of a room. Some rooms might have the same name but different locations.',
+      description:
+        'Unique ID of a room. Some rooms might have the same name but different locations.',
     },
 
     deviceId: {
@@ -22,23 +23,14 @@ const room = new GraphQLObjectType({
       description: 'The friendly name of a Room.',
     },
 
-    session: {
-      type: sessionType,
-      description: 'The session listed for this room',
-    },
-
     floor: {
       type: new GraphQLNonNull(GraphQLString),
       description: 'The floor or level this room is on.',
     },
+
     building: {
       type: new GraphQLNonNull(GraphQLString),
       description: 'The building this room is location inside of.',
-    },
-
-    venue: {
-      type: venueLocation,
-      description: 'Rooms Location',
     },
   }),
 });
