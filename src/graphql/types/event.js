@@ -1,11 +1,4 @@
-import {
-  GraphQLObjectType,
-  GraphQLID,
-  GraphQLNonNull,
-  GraphQLString,
-  GraphQLList,
-  GraphQLDateTime,
-} from 'graphql';
+import { GraphQLObjectType, GraphQLID, GraphQLNonNull, GraphQLString, GraphQLList } from 'graphql';
 
 import venueType from './venue';
 import speakerType from './speakers';
@@ -14,7 +7,7 @@ import roomType from './room';
 
 import eventTypeResolver from '../resolvers/eventType';
 import roomResolver from '../resolvers/rooms';
-import sessionResolver from '../resolvers/sessions';
+import sessionsResolver from '../resolvers/sessions';
 
 const event = new GraphQLObjectType({
   name: 'Event',
@@ -59,7 +52,7 @@ const event = new GraphQLObjectType({
     sessions: {
       type: new GraphQLList(sessionType),
       description: 'speakers for this event',
-      resolve: sessionResolver,
+      resolve: sessionsResolver.getSessionsByEvent,
     },
 
     rooms: {

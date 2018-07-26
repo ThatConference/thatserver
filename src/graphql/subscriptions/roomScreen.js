@@ -1,4 +1,4 @@
-import { GraphQLInt } from 'graphql';
+import { GraphQLInt, GraphQLString } from 'graphql';
 import { withFilter } from 'graphql-subscriptions';
 
 import roomType from '../types/room';
@@ -7,7 +7,12 @@ const roomScreenChanged = {
   type: roomType,
   description: 'Room Screen Subscription',
   args: {
-    roomId: {
+    eventId: {
+      name: 'eventId',
+      type: GraphQLString,
+    },
+    roomName: {
+      name: 'roomName',
       type: GraphQLInt,
     },
   },
@@ -16,7 +21,7 @@ const roomScreenChanged = {
 
   subscribe: withFilter(
     (rootValue, args, { pubsub }) => pubsub.asyncIterator('roomScreenChanged'),
-    (payload, variables) => variables.roomId === payload.id,
+    (payload, variables) => variables.roomName === payload.id,
   ),
 };
 

@@ -1,9 +1,9 @@
 import { GraphQLList, GraphQLString } from 'graphql';
 
 import sessionType from '../types/session';
-import sessionResolver from '../resolvers/sessions';
+import sessionsResolver from '../resolvers/sessions';
 
-const sessions = {
+const session = {
   type: new GraphQLList(sessionType),
   description: 'The room query will return you a list of all rooms for a given event.',
   args: {
@@ -11,10 +11,14 @@ const sessions = {
       name: 'eventId',
       type: GraphQLString,
     },
+    roomName: {
+      name: 'roomName',
+      type: GraphQLString,
+    },
   },
 
-  resolve: sessionResolver,
+  resolve: sessionsResolver.getSessionsByRoom,
 };
 
 // eslint-disable-next-line
-export { sessions };
+export { session };
