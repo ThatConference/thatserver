@@ -5,13 +5,13 @@ import * as roomQuery from './queries/rooms';
 import * as buttonsQuery from './queries/buttons';
 import * as speakersQuery from './queries/speakers';
 import * as eventsQuery from './queries/events';
-import * as sessionQuery from './queries/session';
+import * as sessionsQuery from './queries/sessions';
 
 import * as roomScreenSubscription from './subscriptions/roomScreen';
 import * as roomTempSubscription from './subscriptions/roomTemp';
 import * as speakerStatusSubscription from './subscriptions/speakerStatus';
 
-const queries = _.merge(roomQuery, buttonsQuery, speakersQuery, eventsQuery, sessionQuery);
+const queries = _.merge(roomQuery, buttonsQuery, speakersQuery, eventsQuery, sessionsQuery);
 
 // eslint-disable-next-line
 const subscriptions = _.merge(

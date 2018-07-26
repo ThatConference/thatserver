@@ -3,7 +3,7 @@ import { GraphQLList, GraphQLString } from 'graphql';
 import sessionType from '../types/session';
 import sessionsResolver from '../resolvers/sessions';
 
-const session = {
+const sessions = {
   type: new GraphQLList(sessionType),
   description: 'The room query will return you a list of all rooms for a given event.',
   args: {
@@ -21,4 +21,4 @@ const session = {
 };
 
 // eslint-disable-next-line
-export { session };
+export { sessions };
