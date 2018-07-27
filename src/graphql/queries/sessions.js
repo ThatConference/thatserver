@@ -5,7 +5,7 @@ import sessionsResolver from '../resolvers/sessions';
 
 const sessions = {
   type: new GraphQLList(sessionType),
-  description: 'The room query will return you a list of all rooms for a given event.',
+  description: 'The room query will return you a list of all rooms for a given event and room.',
   args: {
     eventId: {
       name: 'eventId',

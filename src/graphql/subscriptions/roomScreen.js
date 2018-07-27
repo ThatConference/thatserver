@@ -1,10 +1,10 @@
-import { GraphQLInt, GraphQLString } from 'graphql';
+import { GraphQLString, GraphQLList } from 'graphql';
 import { withFilter } from 'graphql-subscriptions';
 
-import roomType from '../types/room';
+import sessionType from '../types/session';
 
 const roomScreenChanged = {
-  type: roomType,
+  type: new GraphQLList(sessionType),
   description: 'Room Screen Subscription',
   args: {
     eventId: {
@@ -13,7 +13,7 @@ const roomScreenChanged = {
     },
     roomName: {
       name: 'roomName',
-      type: GraphQLInt,
+      type: GraphQLString,
     },
   },
 

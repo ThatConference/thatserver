@@ -1,5 +1,13 @@
 import logger from '../../utilities/logger';
 
+/*
+  todo.. this needs to be reworked based on what we get back from the TC Server.
+
+  the change will come in here.
+  DB needs to be updated and the new list needs to get published to everyone.
+  payloads need to match a session found in firebase.
+*/
+
 const post = (request, response) => {
   logger.trace(`session update for ${request.body.id} : ${request.body.name}`);
 
