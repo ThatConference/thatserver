@@ -19,9 +19,10 @@ const roomScreenChanged = {
 
   resolve: payload => payload,
 
+  // todo: find a better way to search the collection looking at the room name.
   subscribe: withFilter(
     (rootValue, args, { pubsub }) => pubsub.asyncIterator('roomScreenChanged'),
-    (payload, variables) => variables.roomName === payload.id,
+    (payload, variables) => variables.roomName === payload[0].scheduledRoom,
   ),
 };
 

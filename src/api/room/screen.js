@@ -1,35 +1,85 @@
 import logger from '../../utilities/logger';
 
-/*
-  todo.. this needs to be reworked based on what we get back from the TC Server.
+// todo: make a argument somewhere.
+const tcEventId = '8FAmhWWyIWDZ6a01gk1A';
 
-  the change will come in here.
-  DB needs to be updated and the new list needs to get published to everyone.
-  payloads need to match a session found in firebase.
-*/
+const getSessionsByRoom = (eventId, roomName, db) => {
+  logger.trace('getSessionsByRoom');
+  return db
+    .collection('sessions')
+    .where('eventId', '==', eventId)
+    .where('scheduledRoom', '==', roomName)
+    .orderBy('scheduledDateTime', 'ASC')
+    .get()
+    .then((docs) => {
+      const results = [];
+      docs.forEach(doc => results.push({ id: doc.id, ...doc.data() }));
+      return results;
+    });
+};
 
-const post = (request, response) => {
-  logger.trace(`session update for ${request.body.id} : ${request.body.name}`);
+const getSessionsById = (sessionId, db) => {
+  logger.trace('getSessionsById');
+  return db
+    .collection('sessions')
+    .doc(sessionId)
+    .get()
+    .then((doc) => {
+      if (!doc.exists) {
+        logger.warning('No such document!');
+        return {};
+      }
+      const session = doc.data();
+      // logger.data('Document data:', session);
+      return session;
+    })
+    .catch((err) => {
+      logger.error('Error getting document', err);
+    });
+};
+
+const updateSession = (sessionId, session, db) => {
+  logger.trace('updateSession');
+  return db
+    .collection('sessions')
+    .doc(sessionId)
+    .set({ eventId: tcEventId, ...session })
+    .then(docRef => logger.info('Added document with ID: ', docRef.id))
+    .catch(err => logger.error(err));
+};
+
+const post = async (request, response) => {
+  logger.trace('session update called');
+  logger.data(request.body);
 
   const pubsub = request.app.get('pubsub');
-  pubsub.publish('roomScreenChanged', request.body);
+  const db = request.app.get('db');
+  const newSession = request.body;
+
+  // get the current session ( if exists ) as we need to know what room will be effected.
+  const originalSession = await getSessionsById(newSession.id, db);
+
+  // update the new session the session
+  await updateSession(newSession.id, newSession, db);
+
+  // get all sessions for effected room
+  const sessionList = await getSessionsByRoom(tcEventId, newSession.scheduledRoom, db);
+
+  // if the room changed, get old room list and update clients
+  if (originalSession.scheduledRoom.toLowerCase() !== newSession.scheduledRoom.toLowerCase()) {
+    const oldRoomSessionList = await getSessionsByRoom(
+      tcEventId,
+      originalSession.scheduledRoom,
+      db,
+    );
+    pubsub.publish('roomScreenChanged', oldRoomSessionList);
+  }
+
+  // update all clients new room
+  pubsub.publish('roomScreenChanged', sessionList);
 
   response.sendStatus(200);
 };
 
 // eslint-disable-next-line
 export { post };
-
-// Room Payload
-// {
-//   "id": 1,
-//   "deviceId": "310021001747353236343033",
-//   "name": "Aralia",
-//   "floor": "1",
-//   "building": "Main Convention Center",
-//   "session": {
-//     "id": 1,
-//     "speakerName": "Clark Sell",
-//     "title": "Making Something MOAR awesome."
-//   }
-// }
