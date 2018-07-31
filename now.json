@@ -16,7 +16,7 @@
     "CLIENT_ID": "@that_server_client_id",
     "CLIENT_X509_CERT_URL": "@that_server_client_x509_cert_url",
     "PARTICLE_TOKEN": "@particle_token",
-    "LOG_LEVEL": "info",
+    "LOG_LEVEL": "verbose",
     "TWILIO_SID": "@that_server_twilio_sid",
     "TWILIO_AUTH": "@that_server_twilio_auth",
     "TWILIO_FROM": "@that_server_twilio_from"

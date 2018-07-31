@@ -9,6 +9,7 @@ const getSessionsByRoom = (eventId, roomName, db) => {
     .collection('sessions')
     .where('eventId', '==', eventId)
     .where('scheduledRoom', '==', roomName)
+    .where('canceled', '==', false)
     .orderBy('scheduledDateTime', 'ASC')
     .get()
     .then((docs) => {
@@ -57,12 +58,15 @@ const post = async (request, response) => {
   const newSession = request.body;
 
   // get the current session ( if exists ) as we need to know what room will be effected.
+  logger.debug('getting original session information');
   const originalSession = await getSessionsById(newSession.id, db);
 
   // update the new session the session
+  logger.debug('updating the db with the new session information');
   await updateSession(newSession.id, newSession, db);
 
-  // get all sessions for effected room
+  // get all sessions for affected room
+  logger.debug('Getting session list for affected rooms');
   const sessionList = await getSessionsByRoom(tcEventId, newSession.scheduledRoom, db);
 
   // if the room changed, get old room list and update clients
@@ -72,10 +76,12 @@ const post = async (request, response) => {
       originalSession.scheduledRoom,
       db,
     );
+    logger.debug('publishing new info to old room list');
     pubsub.publish('roomScreenChanged', oldRoomSessionList);
   }
 
   // update all clients new room
+  logger.debug('publishing new info to new room list');
   pubsub.publish('roomScreenChanged', sessionList);
 
   response.sendStatus(200);

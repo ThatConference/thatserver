@@ -26,7 +26,9 @@ const message = (cache, coreId, db) => {
 
         // todo - we're just always taking the last room... meh
         docs.forEach((doc) => {
-          m = `🔴 ALERT - ${doc.data().roomName.toUpperCase()} requested help.`;
+          m = `🔴 ALERT - ${doc
+            .data()
+            .roomName.toUpperCase()} requested help. https://map.thatconference.com`;
         });
 
         return m;
