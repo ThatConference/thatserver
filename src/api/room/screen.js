@@ -16,6 +16,9 @@ const getSessionsByRoom = (eventId, roomName, db) => {
       const results = [];
       docs.forEach(doc => results.push({ id: doc.id, ...doc.data() }));
       return results;
+    })
+    .catch((err) => {
+      logger.error('getSessionByRoom errored', err);
     });
 };
 
@@ -27,7 +30,7 @@ const getSessionsById = (sessionId, db) => {
     .get()
     .then((doc) => {
       if (!doc.exists) {
-        logger.warning('No such document!');
+        logger.warn('No such document!');
         return {};
       }
       const session = doc.data();
@@ -35,7 +38,7 @@ const getSessionsById = (sessionId, db) => {
       return session;
     })
     .catch((err) => {
-      logger.error('Error getting document', err);
+      logger.error('getSessionsById errored', err);
     });
 };
 
@@ -46,7 +49,7 @@ const updateSession = (sessionId, session, db) => {
     .doc(sessionId)
     .set({ eventId: tcEventId, ...session })
     .then(docRef => logger.info('Added document with ID: ', docRef.id))
-    .catch(err => logger.error(err));
+    .catch(err => logger.error('updateSession errored', err));
 };
 
 const post = async (request, response) => {
@@ -70,14 +73,16 @@ const post = async (request, response) => {
   const sessionList = await getSessionsByRoom(tcEventId, newSession.scheduledRoom, db);
 
   // if the room changed, get old room list and update clients
-  if (originalSession.scheduledRoom.toLowerCase() !== newSession.scheduledRoom.toLowerCase()) {
-    const oldRoomSessionList = await getSessionsByRoom(
-      tcEventId,
-      originalSession.scheduledRoom,
-      db,
-    );
-    logger.debug('publishing new info to old room list');
-    pubsub.publish('roomScreenChanged', oldRoomSessionList);
+  if (originalSession) {
+    if (originalSession.scheduledRoom.toLowerCase() !== newSession.scheduledRoom.toLowerCase()) {
+      const oldRoomSessionList = await getSessionsByRoom(
+        tcEventId,
+        originalSession.scheduledRoom,
+        db,
+      );
+      logger.debug('publishing new info to old room list');
+      pubsub.publish('roomScreenChanged', oldRoomSessionList);
+    }
   }
 
   // update all clients new room
