@@ -65,6 +65,11 @@ const session = new GraphQLObjectType({
       description: 'Session Description',
     },
 
+    sessionDuration: {
+      type: GraphQLID,
+      description: 'Session Duration',
+    },
+
     isFamilyApproved: {
       type: GraphQLBoolean,
       description: 'Session Description',
