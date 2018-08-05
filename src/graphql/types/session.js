@@ -66,7 +66,7 @@ const session = new GraphQLObjectType({
     },
 
     sessionDuration: {
-      type: GraphQLID,
+      type: GraphQLInt,
       description: 'Session Duration',
     },
 
