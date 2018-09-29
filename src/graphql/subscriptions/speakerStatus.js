@@ -24,7 +24,7 @@ const speakerStatusChanged = {
     // variables is what the connection was setup with.
     // payload is the request
     async (payload, variables, { cache, db }) => {
-      logger.trace(`Speaker Status Subscription, roomName: ${variables.roomName}`);
+      logger.trace(`speakerStatusChanged, roomName: ${variables.roomName}`);
 
       // return all room status
       if (variables.roomName.toLowerCase() === 'all'.toLowerCase()) return true;
@@ -56,8 +56,9 @@ const onSpeakerStatusByCoreId = {
     // variables is what the connection was setup with.
     // payload is the request
     async (payload, variables, { cache, db }) => {
-      logger.trace(`Speaker Status Subscription, coreId: ${variables.coreId}`);
-      return variables.coreId === payload.coreId;
+      logger.trace(`onSpeakerStatusByCoreId, coreId: ${variables.coreId}`);
+      // coreid is cased wrong from the device
+      return variables.coreId === payload.coreid;
     },
   ),
 };

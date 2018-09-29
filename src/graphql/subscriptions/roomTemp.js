@@ -38,7 +38,8 @@ const onRoomTempByCoreId = {
     // payload is the request
     async (payload, variables, { cache, db }) => {
       logger.trace(`Speaker Status Subscription, coreId: ${variables.coreId}`);
-      return variables.coreId === payload.coreId;
+      // coreid is cased wrong from the device
+      return variables.coreId === payload.coreid;
     },
   ),
 };
