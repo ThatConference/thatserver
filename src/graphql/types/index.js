@@ -6,6 +6,7 @@ import room from './room';
 import roomTemp from './roomTemp';
 import speakerStatus from './speakerStatus';
 import session from './session';
+import customer from './customer';
 
 module.exports = {
   speakers,
@@ -15,4 +16,5 @@ module.exports = {
   roomTemp,
   speakerStatus,
   session,
+  customer,
 };

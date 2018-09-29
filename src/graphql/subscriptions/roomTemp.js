@@ -1,3 +1,4 @@
+import { GraphQLString } from 'graphql';
 import { withFilter } from 'graphql-subscriptions';
 
 import logger from '../../utilities/logger';
@@ -20,5 +21,27 @@ const roomTempChanged = {
   ),
 };
 
+const onRoomTempByCoreId = {
+  type: roomTempType,
+  description: 'Room Temp Subscription',
+  args: {
+    coreId: {
+      type: GraphQLString,
+    },
+  },
+
+  resolve: payload => payload,
+
+  subscribe: withFilter(
+    (rootValue, args, { pubsub }) => pubsub.asyncIterator('roomTempChanged'),
+    // variables is what the connection was setup with.
+    // payload is the request
+    async (payload, variables, { cache, db }) => {
+      logger.trace(`Speaker Status Subscription, coreId: ${variables.coreId}`);
+      return variables.coreId === payload.coreId;
+    },
+  ),
+};
+
 // eslint-disable-next-line
-export { roomTempChanged };
+export { roomTempChanged, onRoomTempByCoreId };

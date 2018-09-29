@@ -39,5 +39,28 @@ const speakerStatusChanged = {
   ),
 };
 
+const onSpeakerStatusByCoreId = {
+  type: speakerStatusType,
+  description: 'Speaker Status Subscription by Device Id',
+  args: {
+    coreId: {
+      type: GraphQLString,
+    },
+  },
+
+  // just kicking out the exact payload we got from things...
+  resolve: payload => payload,
+
+  subscribe: withFilter(
+    (rootValue, args, { pubsub }) => pubsub.asyncIterator('speakerStatusChanged'),
+    // variables is what the connection was setup with.
+    // payload is the request
+    async (payload, variables, { cache, db }) => {
+      logger.trace(`Speaker Status Subscription, coreId: ${variables.coreId}`);
+      return variables.coreId === payload.coreId;
+    },
+  ),
+};
+
 // eslint-disable-next-line
-export { speakerStatusChanged };
+export { speakerStatusChanged, onSpeakerStatusByCoreId };
