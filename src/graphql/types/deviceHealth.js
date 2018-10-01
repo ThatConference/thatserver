@@ -4,25 +4,41 @@ const deviceHealth = new GraphQLObjectType({
   name: 'DeviceHealth',
   description: 'Device Health Stats',
   fields: () => ({
-    device: {
-      description: 'Device Information',
+    published_at: {
+      type: new GraphQLNonNull(GraphQLString),
+      description: 'TBD',
+    },
+    coreid: {
+      type: new GraphQLNonNull(GraphQLString),
+      description: 'TBD',
+    },
+    data: {
+      description: 'Payload Data',
       type: new GraphQLObjectType({
-        name: 'Device',
-        description: 'Device Information',
+        name: 'Data',
         fields: () => ({
-          network: {
+          device: {
+            description: 'Device Information',
             type: new GraphQLObjectType({
-              name: 'Network',
+              name: 'Device',
+              description: 'Device Information',
               fields: () => ({
-                connection: {
+                network: {
                   type: new GraphQLObjectType({
-                    name: 'Connection',
+                    name: 'Network',
                     fields: () => ({
-                      status: {
-                        type: GraphQLString,
-                      },
-                      error: {
-                        type: GraphQLString,
+                      connection: {
+                        type: new GraphQLObjectType({
+                          name: 'Connection',
+                          fields: () => ({
+                            status: {
+                              type: GraphQLString,
+                            },
+                            error: {
+                              type: GraphQLString,
+                            },
+                          }),
+                        }),
                       },
                     }),
                   }),
