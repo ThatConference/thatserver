@@ -40,6 +40,19 @@ const deviceHealth = new GraphQLObjectType({
                           }),
                         }),
                       },
+                      signal: {
+                        type: new GraphQLObjectType({
+                          name: 'Signal',
+                          fields: () => ({
+                            strength: {
+                              type: GraphQLString,
+                            },
+                            quality: {
+                              type: GraphQLString,
+                            },
+                          }),
+                        }),
+                      },
                     }),
                   }),
                 },
