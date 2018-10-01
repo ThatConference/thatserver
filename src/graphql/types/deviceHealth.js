@@ -5,8 +5,8 @@ const deviceHealth = new GraphQLObjectType({
   description: 'Device Health Stats',
   fields: () => ({
     published_at: {
-      type: new GraphQLNonNull(GraphQLString),
-      description: 'TBD',
+      type: GraphQLString,
+      description: 'Event Published at',
     },
     coreid: {
       type: new GraphQLNonNull(GraphQLString),
