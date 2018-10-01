@@ -50,11 +50,10 @@ const post = (request, response) => {
   logger.trace('particle device health updated');
   logger.data('device health data:', request.body);
 
-  const newPayload = request.body;
-  newPayload.data = JSON.parse(request.body.data);
+  const deviceHealth = JSON.parse(request.body.data);
 
   const pubsub = request.app.get('pubsub');
-  pubsub.publish('deviceHealth', newPayload);
+  pubsub.publish('deviceHealth', deviceHealth);
 
   response.sendStatus(200);
 };

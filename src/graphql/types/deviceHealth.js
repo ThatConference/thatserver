@@ -4,9 +4,34 @@ const deviceHealth = new GraphQLObjectType({
   name: 'DeviceHealth',
   description: 'Device Health Stats',
   fields: () => ({
-    coreId: {
-      type: GraphQLString,
-      description: 'Button Core Id',
+    device: {
+      description: 'Device Information',
+      type: new GraphQLObjectType({
+        name: 'Device',
+        description: 'Device Information',
+        fields: () => ({
+          network: {
+            type: new GraphQLObjectType({
+              name: 'Network',
+              fields: () => ({
+                connection: {
+                  type: new GraphQLObjectType({
+                    name: 'Connection',
+                    fields: () => ({
+                      status: {
+                        type: GraphQLString,
+                      },
+                      error: {
+                        type: GraphQLString,
+                      },
+                    }),
+                  }),
+                },
+              }),
+            }),
+          },
+        }),
+      }),
     },
   }),
 });
