@@ -3,7 +3,7 @@ import logger from './logger';
 
 import buttons from '../data/buttons';
 
-const monitorDelay = 60000;
+const monitorDelay = 120000;
 const slug = 'https://api.particle.io/v1/diagnostics/';
 
 const run = (cache, db) => {

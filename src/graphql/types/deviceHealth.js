@@ -1,7 +1,7 @@
 import { GraphQLObjectType, GraphQLString, GraphQLID, GraphQLNonNull } from 'graphql';
 
 const deviceHealth = new GraphQLObjectType({
-  name: 'Device Health',
+  name: 'DeviceHealth',
   description: 'Device Health Stats',
   fields: () => ({
     coreId: {
