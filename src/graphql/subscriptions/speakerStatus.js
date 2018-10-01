@@ -58,6 +58,7 @@ const onSpeakerStatusByCoreId = {
     async (payload, variables, { cache, db }) => {
       logger.trace(`onSpeakerStatusByCoreId, coreId: ${variables.coreId}`);
       // coreid is cased wrong from the device
+      console.log(variables.coreId === payload.coreid);
       return variables.coreId === payload.coreid;
     },
   ),

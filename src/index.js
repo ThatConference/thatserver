@@ -15,6 +15,7 @@ import db from './data/firebase';
 import logger from './utilities/logger';
 import schema from './graphql';
 import routes from './api';
+import deviceMonitor from './utilities/deviceMonitor';
 
 const PORT = Number(process.env.PORT || 8000);
 const app = express();
@@ -98,3 +99,6 @@ ws.listen(PORT, () => {
     },
   );
 });
+
+// start the device monitor
+deviceMonitor.run(cache, db);

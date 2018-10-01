@@ -12,6 +12,7 @@ import * as roomScreenSubscription from './subscriptions/roomScreen';
 import * as roomTempSubscription from './subscriptions/roomTemp';
 import * as speakerStatusSubscription from './subscriptions/speakerStatus';
 import * as deploymentSubscription from './subscriptions/deployment';
+import * as deviceHealthSubscription from './subscriptions/deviceHealth';
 
 const queries = _.merge(
   customersQuery,
@@ -28,6 +29,7 @@ const subscriptions = _.merge(
   roomTempSubscription,
   speakerStatusSubscription,
   deploymentSubscription,
+  deviceHealthSubscription,
 );
 
 const graphSchema = new GraphQLSchema({
