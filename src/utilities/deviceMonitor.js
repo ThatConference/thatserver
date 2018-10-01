@@ -9,7 +9,7 @@ const slug = 'https://api.particle.io/v1/diagnostics/';
 const run = (cache, db) => {
   logger.trace('Requesting devices to publish health status...');
 
-  setTimeout(async () => {
+  setInterval(async () => {
     const buttonDevices = await buttons(cache, db);
 
     // eslint-disable-next-line
