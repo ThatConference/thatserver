@@ -4,7 +4,7 @@ import { withFilter } from 'graphql-subscriptions';
 import logger from '../../utilities/logger';
 import deviceHealthType from '../types/deviceHealth';
 
-const deviceMonitor = {
+const onDeviceMonitor = {
   type: deviceHealthType,
   description: 'Device Health',
   args: {
@@ -28,4 +28,4 @@ const deviceMonitor = {
 };
 
 // eslint-disable-next-line
-export { deviceMonitor };
+export { onDeviceMonitor };
