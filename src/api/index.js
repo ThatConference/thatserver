@@ -3,6 +3,7 @@ import * as brbTemp from './brb/temp';
 
 import * as brbAck from './brb/ack';
 import * as roomScreen from './room/screen';
+import * as deviceHealth from './brb/health';
 
 import * as deployment from './admin/deployment';
 
@@ -16,6 +17,7 @@ const registerRoutes = (app) => {
   // TODO: just there for demo purposes
   app.route('/api/brb/temp').post(brbTemp.post);
   app.route('/api/brb/status').post(brbStatus.post);
+  app.route('/api/brb/health').post(deviceHealth.post);
 
   // Admin URIs
   app.route('/api/admin/deployment').post(deployment.post);
