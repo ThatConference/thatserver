@@ -31,7 +31,7 @@ const run = (pubsub, cache, db) => {
             },
           },
         };
-        pubsub.publish('speakerStatusChanged', result);
+        pubsub.publish('deviceHealth', result);
         logger.error(`Core ID ${currentCoreId} ERRORED: ${e}`);
       });
     }
