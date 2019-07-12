@@ -100,3 +100,33 @@ const post = async (request, response) => {
 
 // eslint-disable-next-line
 export { post };
+
+// sample payload
+/*
+
+{ eventId: 'htFi118GD1fGFYdI6Jep',
+  id: '14055',
+  updated: false,
+  title: 'Test Open Spaces 2',
+  description: 'Test Open Spaces 2',
+  primaryCategory: null,
+  primaryCategoryDisplayText: null,
+  secondaryCategory: null,
+  secondaryCategoryDisplayText: null,
+  level: null,
+  scheduledDateTime: '2019-08-06T14:30:00',
+  scheduledRoom: 'Open Spaces',
+  isFamilyApproved: false,
+  isUserFavorite: null,
+  isWorkshop: false,
+  accepted: false,
+  canceled: true,
+  willBeRecorded: false,
+  speakers: [],
+  tags: [],
+  sessionLinks: [],
+  lastUpdated: null,
+  showMoreDetails: false,
+  descriptionHtml: '',
+  descriptionHtmlTruncated: '' }
+*/

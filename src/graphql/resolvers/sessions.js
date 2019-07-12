@@ -21,7 +21,7 @@ const getSessionsByRoom = (event, args, { db }) =>
     .collection('sessions')
     .where('eventId', '==', args.eventId)
     .where('scheduledRoom', '==', args.roomName)
-    .where('canceled', '==', false)
+    .where('cancelled', '==', false)
     .orderBy('scheduledDateTime', 'ASC')
     .get()
     .then((docs) => {
