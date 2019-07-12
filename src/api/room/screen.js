@@ -2,7 +2,7 @@ import _ from 'lodash';
 import logger from '../../utilities/logger';
 
 // todo: make a argument somewhere.
-const tcEventId = '8FAmhWWyIWDZ6a01gk1A';
+const tcEventId = process.env.TC_EVENT_ID;
 
 const getSessionsByRoom = (eventId, roomName, db) => {
   logger.trace('getSessionsByRoom');
