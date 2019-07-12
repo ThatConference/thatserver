@@ -27,8 +27,9 @@ const logger = new Winston.Logger({
   },
 });
 
+// level: process.env.LOG_LEVEL || 'verbose',
 logger.add(Winston.transports.Console, {
-  level: process.env.LOG_LEVEL || 'verbose',
+  level: 'verbose',
   prettyPrint: true,
   colorize: true,
   silent: false,
