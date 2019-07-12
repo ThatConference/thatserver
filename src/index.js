@@ -101,4 +101,4 @@ ws.listen(PORT, () => {
 });
 
 // start the device monitor
-deviceMonitor.run(pubsub, cache, db);
+// deviceMonitor.run(pubsub, cache, db);
