@@ -12,7 +12,7 @@ const getSessionsByEvent = (event, args, { db }) => {
     .then((docs) => {
       const results = [];
       docs.forEach(doc => results.push({ id: doc.id, ...doc.data() }));
-      return results;
+      return results.map(r => ({ ...r, tags: r.tags.map(t => t.Name) }));
     });
 };
 
@@ -27,7 +27,7 @@ const getSessionsByRoom = (event, args, { db }) =>
     .then((docs) => {
       const results = [];
       docs.forEach(doc => results.push({ id: doc.id, ...doc.data() }));
-      return results;
+      return results.map(r => ({ ...r, tags: r.tags.map(t => t.Name) }));
     });
 
 export default { getSessionsByEvent, getSessionsByRoom };
