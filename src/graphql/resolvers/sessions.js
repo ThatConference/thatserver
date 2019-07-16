@@ -2,12 +2,11 @@ import _ from 'lodash';
 
 const getSessionsByEvent = (event, args, { db }) => {
   const eventId = _.isEmpty(args) ? event.id : args.eventId;
-
-  db
+  return db
     .collection('sessions')
     .where('eventId', '==', eventId)
-    .orderBy('scheduledDateTime')
     .where('canceled', '==', false)
+    .orderBy('scheduledDateTime', 'ASC')
     .get()
     .then((docs) => {
       const results = [];
