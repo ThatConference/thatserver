@@ -5,6 +5,7 @@ const getSessionsByEvent = (event, args, { db }) => {
   return db
     .collection('sessions')
     .where('eventId', '==', eventId)
+    .where('accepted', '==', true)
     .where('canceled', '==', false)
     .orderBy('scheduledDateTime', 'ASC')
     .get()
@@ -20,6 +21,7 @@ const getSessionsByRoom = (event, args, { db }) =>
     .collection('sessions')
     .where('eventId', '==', args.eventId)
     .where('scheduledRoom', '==', args.roomName)
+    .where('accepted', '==', true)
     .where('canceled', '==', false)
     .orderBy('scheduledDateTime', 'ASC')
     .get()
