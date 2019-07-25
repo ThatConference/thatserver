@@ -45,12 +45,22 @@ const getSessionsById = (sessionId, db) => {
 
 const updateSession = (sessionId, session, db) => {
   logger.trace('updateSession');
-  return db
-    .collection('sessions')
-    .doc(sessionId)
-    .set({ eventId: tcEventId, ...session })
-    .then(docRef => logger.info('Added document with ID: ', docRef.id))
-    .catch(err => logger.error('updateSession errored', err));
+
+  const newSession = session;
+  delete newSession.speakers;
+
+  // need to remap the speakers...
+  newSession.speakers = session.speakers.map(s => s.UserName);
+
+  return (
+    db
+      .collection('sessions')
+      .doc(sessionId)
+      // this is a set just in case we don't have the document already, meh
+      .set({ eventId: tcEventId, ...newSession })
+      .then(docRef => logger.info('Added document with ID: ', docRef.id))
+      .catch(err => logger.error('updateSession errored', err))
+  );
 };
 
 const post = async (request, response) => {
