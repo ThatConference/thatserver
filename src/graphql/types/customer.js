@@ -16,6 +16,10 @@ const customer = new GraphQLObjectType({
       type: GraphQLString,
       description: 'Button Core Id',
     },
+    tcId: {
+      type: GraphQLString,
+      description: 'THAT button Id',
+    },
   }),
 });
 
