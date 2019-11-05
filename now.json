@@ -10,16 +10,16 @@
   "env": {
     "SUBSCRIPTIONS_HOST": "wss://api.thatconference.com",
     "PORT": "443",
-    "PRIVATE_KEY_ID": "@that_server_private_key_id",
-    "PRIVATE_KEY": "@that_server_private_key",
-    "CLIENT_EMAIL": "@that_server_client_email",
-    "CLIENT_ID": "@that_server_client_id",
-    "CLIENT_X509_CERT_URL": "@that_server_client_x509_cert_url",
-    "PARTICLE_TOKEN": "@particle_token",
+    "PRIVATE_KEY_ID": "@thatserver_firebase_private_key_id",
+    "PRIVATE_KEY": "@thatserver_firebase_private_key",
+    "CLIENT_EMAIL": "@thatserver_firebase_client_email",
+    "CLIENT_ID": "@thatserver_firebase_client_id",
+    "CLIENT_X509_CERT_URL": "@thatserver_firebase_client_x509_cert_url",
+    "PARTICLE_TOKEN": "@thatserver_particle_token",
     "LOG_LEVEL": "verbose",
-    "TWILIO_SID": "@that_server_twilio_sid",
-    "TWILIO_AUTH": "@that_server_twilio_auth",
-    "TWILIO_FROM": "@that_server_twilio_from",
+    "TWILIO_SID": "@thatserver_twilio_sid",
+    "TWILIO_AUTH": "@thatserver_twilio_auth",
+    "TWILIO_FROM": "@thatserver_twilio_from",
     "TC_EVENT_ID": "htFi118GD1fGFYdI6Jep"
   }
 }
