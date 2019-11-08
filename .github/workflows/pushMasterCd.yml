@@ -44,4 +44,4 @@ jobs:
         env:
           CLOUDSDK_CORE_PROJECT: ${{ secrets.GCP_PROJECT_ID }}
         with:
-          args: gcloud app deploy 
+          args: app deploy 
