@@ -1,0 +1,14 @@
+# files and directories not to be uploaded to gcloud (AppEngine)
+node_modules/
+build/
+.vscode/
+.git/
+
+.env
+.env.sample
+.eslintrc.json
+.nvmrc
+.prettierrc
+.travis.yml
+nodemon.json
+now.json

@@ -1,0 +1,47 @@
+# Node Build and Validate and deploy on master push
+name: Push Master CI
+
+on:
+  push:
+    branches: 
+      - master
+    
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@master
+    - name: Use Node.js 10.x
+      uses: actions/setup-node@master
+      with:
+        node-version: 10.x
+    - name: npm ci, run validate
+      run: |
+        # TODO: set env for CI
+        cp .env.sample .env
+        npm ci
+        npm run validate
+
+  deploy:
+    name: Deploy
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@master
+      - name: Create .env
+        run: echo ${{ secrets.APPYAML_FILE_PROD }} | base64 -d > ./app.yaml
+      - name: Checks
+        run: ls -lasiR
+      - name: GCP Authentication
+        uses: actions/gcloud/auth@master
+        env:
+          GCLOUD_AUTH: ${{ secrets.GCLOUD_AUTH }}
+      - name: Deploy thatserver - AppEngine
+        uses: actions/gclioud/cli@master
+        env:
+          CLOUDSDK_CORE_PROJECT: ${{ secrets.GCP_PROJECT_ID }}
+        with:
+          args: gcloud app deploy 
