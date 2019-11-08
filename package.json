@@ -1,6 +1,6 @@
 {
   "name": "that-server",
-  "version": "0.0.1",
+  "version": "0.2.0",
   "description": "That Conference Backend Server",
   "license": "Apache-2.0",
   "main": "index.js",
@@ -9,9 +9,13 @@
     "url": "https://github.com/ThatConference/thatserver.git"
   },
   "scripts": {
-    "start": "node ./index",
+    "start": "node ./build/index",
     "start:watch": "nodemon ./src/index.js --exec babel-node",
+    "gcp-build": "npm run build",
     "build": "babel ./src -d ./build --source-maps --ignore __test__",
+    "postbuild": "",
+    "after:build:set:public": "",
+    "prebuild": "rm -rf ./build ",
     "test": "jest --coverage",
     "test:watch": "jest --watchAll",
     "lint": "eslint -c ./.eslintrc.json ./src",
@@ -29,7 +33,7 @@
     }
   ],
   "engines": {
-    "node": "^8.9"
+    "node": "10.x"
   },
   "jest": {
     "testEnvironment": "node",
@@ -41,6 +45,7 @@
     "agenda": "^2.0.0",
     "apollo-server-express": "^1.3.6",
     "body-parser": "^1.18.3",
+    "concurrently": "^5.0.0",
     "cors": "^2.8.4",
     "dotenv": "^5.0.1",
     "express": "^4.16.3",

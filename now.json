@@ -1,12 +1,7 @@
 {
-  "name": "that-server",
+  "name": "thatserver",
+  "version": 2,
   "alias": "api.thatconference.com",
-  "scale": {
-    "sfo1": {
-      "min": 1,
-      "max": "auto"
-    }
-  },
   "env": {
     "SUBSCRIPTIONS_HOST": "wss://api.thatconference.com",
     "PORT": "443",
@@ -21,5 +16,12 @@
     "TWILIO_AUTH": "@thatserver_twilio_auth",
     "TWILIO_FROM": "@thatserver_twilio_from",
     "TC_EVENT_ID": "htFi118GD1fGFYdI6Jep"
-  }
+  },
+  "builds":[
+    
+  ],
+  "routes": [
+    { "src": "/api/(.*)", "dest": "/build/api/$1" },
+    { "src": "/(.*)", "dest": "/build/$1"}
+  ]
 }

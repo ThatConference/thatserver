@@ -1,0 +1,26 @@
+# Tarteting standard environment
+# https://cloud.google.com/appengine/docs/standard/nodejs/config/appref
+
+# Flexible environment
+runtime: nodejs
+env: flex
+
+# Standard environment
+#runtime: nodejs10
+
+manual_scaling:
+  instances: 1
+
+env_variables:
+  SUBSCRIPTIONS_HOST: <host>
+  PRIVATE_KEY_ID: <key>
+  PRIVATE_KEY: <supersecretkey>
+  CLIENT_EMAIL: <firebasecraziness>
+  CLIENT_ID: <clientid>
+  CLIENT_X509_CERT_URL: <morecraziness>
+  PARTICLE_TOKEN: <particlegoo>
+  LOG_LEVEL: verbose
+  TWILIO_SID: <twiliosid>
+  TWILIO_AUTH: <twiliosecret>
+  TWILIO_FROM: <twilionumber>
+  TC_EVENT_ID: htFi118GD1fGFYdI6Jep

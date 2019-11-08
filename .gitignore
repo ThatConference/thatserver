@@ -63,9 +63,15 @@ typings/
 # babel build output
 build/
 
+# build out put for now compatibility
+public/
+
 # ignore private directories
 private/
 
 # ignore the private key for firebase
 *.private.json
 *.private.cert
+
+# temporary security measure
+app.yaml
