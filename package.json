@@ -57,7 +57,7 @@
     "graphql-voyager": "^1.0.0-rc.15",
     "lodash": "^4.17.10",
     "moment": "^2.22.1",
-    "mongoose": "^5.1.0",
+    "mongoose": "^5.7.5",
     "node-cache": "^4.2.0",
     "request-promise": "^4.2.2",
     "subscriptions-transport-ws": "^0.9.9",
