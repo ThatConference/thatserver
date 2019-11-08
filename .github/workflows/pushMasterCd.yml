@@ -40,7 +40,7 @@ jobs:
         env:
           GCLOUD_AUTH: ${{ secrets.GCLOUD_AUTH }}
       - name: Deploy thatserver - AppEngine
-        uses: actions/gclioud/cli@master
+        uses: actions/gcloud/cli@master
         env:
           CLOUDSDK_CORE_PROJECT: ${{ secrets.GCP_PROJECT_ID }}
         with:
