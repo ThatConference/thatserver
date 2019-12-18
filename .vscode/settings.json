@@ -10,6 +10,8 @@
         "titleBar.inactiveBackground": "#cccf00",
         "statusBar.background": "#cccf00",
         "statusBar.foreground": "#000000"
-      }
-    
+      },
+    "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": true
+    }
 }
