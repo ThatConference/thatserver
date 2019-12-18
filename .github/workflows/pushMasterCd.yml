@@ -21,6 +21,15 @@ jobs:
       run: |
         npm ci
         npm run validate
+    - name: Slack Notification
+      uses: 8398a7/action-slack@v2
+      with:
+        status: ${{ job.status }}
+        author: Push Master CI
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_DEV_NOTIFICATIONS }}
+      if: job.status == 'failure' || job.status == 'cancelled'
 
   deploy:
     name: Deploy
@@ -33,13 +42,21 @@ jobs:
         run: echo ${{ secrets.APPYAML_FILE_PROD }} | base64 -d > ./app.yaml
       - name: Checks
         run: ls -lasiR
-      - name: GCP Authentication
-        uses: actions/gcloud/auth@master
-        env:
-          GCLOUD_AUTH: ${{ secrets.GCLOUD_AUTH }}
-      - name: Deploy thatserver - AppEngine
-        uses: actions/gcloud/cli@master
+      - name: Setup GCP Actions
+        uses: GoogleCloudPlatform/github-actions/setup-gcloud@master
+        with:
+          version: '270.0.0'
+          service_account_key: ${{ secrets.GCLOUD_AUTH }}
+      - name: Deploy - thatserver to AppEngine
+        run: gcloud app deploy
         env:
           CLOUDSDK_CORE_PROJECT: ${{ secrets.GCP_PROJECT_ID }}
+      - name: Slack Notification
+        uses: 8398a7/action-slack@v2
         with:
-          args: app deploy 
+          status: ${{ job.status }}
+          author: Push Master CI
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_DEV_NOTIFICATIONS }}
+        if: always()
