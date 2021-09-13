@@ -9,11 +9,11 @@
     "url": "https://github.com/ThatConference/thatserver.git"
   },
   "scripts": {
-    "start": "node ./build/index",
+    "start": "node index",
     "start:watch": "nodemon ./src/index.js --exec babel-node",
     "gcp-build": "npm run build",
     "build": "babel ./src -d ./build --source-maps --ignore __test__",
-    "postbuild": "",
+    "postbuild": "cp package* ./build",
     "after:build:set:public": "",
     "prebuild": "rm -rf ./build ",
     "test": "jest --coverage",
